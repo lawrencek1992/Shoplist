@@ -7,6 +7,17 @@
   background-position: center center;
   height: 100vh;
   width: auto;
+  color: #000;
+}
+
+.list {
+  font-size: 2em;
+  padding-top: 0;
+  margin-top: 0;
+  text-align: left;
+  position: absolute;
+  left: 57%;
+  top: 20%;
 }
 
 /* .App-header {
