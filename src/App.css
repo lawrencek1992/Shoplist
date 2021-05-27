@@ -21,7 +21,16 @@
 }
 
 .AddButton {
-  color: red;
+  color: white;
+  background-color: red;
+  font-size: 5em;
+  position: absolute;
+  top: 75%;
+  left: 39.5%;
+  height: 1.5em;
+  width: 1.5em;
+  line-height: 1.3em;
+  border-radius: 50%;
 }
 
 /* .App-header {
