@@ -1,42 +1,49 @@
+/* Overall styling */
 .App {
   text-align: center;
   background-color: #fff;
-  background-image: url('./media/landscape-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
+  height: 100vh;
+  width: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* .App-header {
+} */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Media queries for responsive design */
+/* Extra Large Screens */
+@media (max-width: 1600px) {
+  .App {
+    background-image: url('./media/landscape-background.jpg');
   }
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Large tablets or small laptops */
+@media (max-width: 1200px) {
+  .App {
+    background-image: url('./media/landscape-background.jpg');
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Regular sized tablets */
+@media (max-width: 768px) {
+  .App {
+    background-image: url('./media/portrait-background.jpg');
+  }
+}
+
+/* Regular sized phones */
+@media (max-width: 480px) {
+  .App {
+    background-image: url('./media/portrait-background.jpg');
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+  .App {
+    background-image: url('./media/portrait-background.jpg');
   }
 }
