@@ -2,7 +2,7 @@ import React from 'react';
 
 const List = () => {
     return (
-        <ul className="list">
+        <ul className="List">
             <li>
                 eggs
             </li>
