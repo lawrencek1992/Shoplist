@@ -13,20 +13,20 @@ const Header = () => {
             <Navbar.Brand href="/">
                 <FontAwesomeIcon 
                     icon={faShoppingBag} id="shopping-icon" 
-                    style={{ "margin-left": "10px", "margin-right": "5px",}}
+                    style={{ "marginLeft": "10px", "marginRight": "5px",}}
                 />
                 Shoplist
             </Navbar.Brand>
             <Nav>
                 <Button 
                     className="btn-danger text-right"
-                    style={{ "margin-right": "10px", }}
+                    style={{ "marginRight": "10px", }}
                 >
                     Sign Up
                 </Button>
                 <Button 
                     variant="outline-success"
-                    style={{ "margin-right": "10px", }}
+                    style={{ "marginRight": "10px", }}
                 >
                     Login
                 </Button>
