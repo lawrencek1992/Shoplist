@@ -67,15 +67,16 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                             })}}
                         >
                             <option>select item</option>
-                            <option>produce</option>
                             <option>bakery</option>
-                            <option>meat</option>
-                            <option>seafood</option>
-                            <option>pantry</option>
                             <option>dairy</option>
+                            <option>deli</option>
                             <option>frozen</option>
-                            <option>pharmacy</option>
                             <option>household goods</option>
+                            <option>meat</option>
+                            <option>pantry</option>
+                            <option>pharmacy</option>
+                            <option>produce</option>
+                            <option>seafood</option>
                         </Form.Control>
                     </Form.Group>
                 </Form>
