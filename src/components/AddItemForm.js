@@ -92,7 +92,7 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                 </Button>
                 <Button 
                     className="btn btn-secondary" type="cancel" 
-                    onClick={() => {
+                    onSubmit={() => {
                         clearForm();
                         handleHide();
                     }}>
