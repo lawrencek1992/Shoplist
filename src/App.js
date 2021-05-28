@@ -25,7 +25,9 @@ function App() {
 
   return (
     <div className="App">
-      <List />
+      <List 
+        listItems={listItems}
+      />
       <AddItemForm 
         showModal={showModal} 
         handleHide={handleHide}

@@ -1,21 +1,13 @@
 import React from 'react';
+import ListGroup from 'react-bootstrap/ListGroup'
 
-const List = () => {
+const List = ({listItems}) => {
     return (
-        <ul className="List">
-            <li>
-                eggs
-            </li>
-            <li>
-                milk
-            </li>
-            <li>
-                cream
-            </li>
-            <li>
-                figs
-            </li>
-      </ul>
+        <ListGroup>
+            {listItems && listItems.map((item) => (
+                <ListGroup.Item className={item.category}>{item.name}</ListGroup.Item>
+            ))}
+        </ListGroup>
     )
 }
 

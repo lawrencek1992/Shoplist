@@ -1,6 +1,7 @@
 // Override default variables before the import
 $danger: #D63931;
 $btn-close-color: #fff;
+$list-group-item-padding-x: 2em;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
