@@ -20,9 +20,15 @@ function App() {
   }
 
   const addNewItem = (item) => {
-    console.log("You're in the addNewItem function!");
     const updatedList = listItems.concat(item);
     setListItems(updatedList);
+  }
+
+  const deleteItem = (item) => {
+    console.log("You're in the deleteItem function!");
+    const index = listItems.indexOf(item);
+    console.log("The index is " + index);
+    // setListItems(updatedList);
   }
 
   return (
@@ -30,6 +36,7 @@ function App() {
       <Header />
       <List 
         listItems={listItems}
+        deleteItem={deleteItem}
       />
       <AddItemForm 
         showModal={showModal} 
