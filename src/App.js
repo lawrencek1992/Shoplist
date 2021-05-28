@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useStorageState } from 'react-storage-hooks';
 import './App.css';
 import './custom.scss';
 
@@ -8,7 +9,7 @@ import AddItemForm from './components/AddItemForm';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const [listItems, setListItems] = useState([]);
+  const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
 
   const handleButtonClick = () => {
     setShowModal(true);
