@@ -10,14 +10,33 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
             handleHide();
         }
     }
+
+    const clearForm = () => {
+        setItem({});
+    }
     
     return (
-        <Modal show={showModal} onHide={handleHide} centered>
+        <Modal 
+            show={showModal} 
+            onHide={() => { 
+                clearForm(); 
+                handleHide()
+            }} 
+            centered
+        >
             <Modal.Header id="modal">
                 <Modal.Title>
                     Add Item
                 </Modal.Title>
-                <Button type="close" className="btn btn-close" id="btn-close" ariaLabel="Close" onClick={handleHide} />
+                <Button 
+                    type="close" 
+                    className="btn btn-close" id="btn-close" 
+                    ariaLabel="Close" 
+                    onClick={() => { 
+                        clearForm(); 
+                        handleHide();
+                    }} 
+                />
             </Modal.Header>
             <Modal.Body id="modal">
                 <Form>
@@ -62,10 +81,21 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer id="modal">
-                <Button className="btn btn-success" type="submit" onClick={() => {handleHide(); handleForm()}}>
+                <Button 
+                    className="btn btn-success" type="submit" 
+                    onClick={() => {
+                        clearForm();
+                        handleHide(); 
+                        handleForm();
+                    }}>
                     Submit
                 </Button>
-                <Button className="btn btn-secondary" type="cancel" onClick={handleHide}>
+                <Button 
+                    className="btn btn-secondary" type="cancel" 
+                    onClick={() => {
+                        clearForm();
+                        handleHide();
+                    }}>
                     Cancel
                 </Button>
             </Modal.Footer>
