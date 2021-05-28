@@ -49,7 +49,8 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                             value={item.name} defaultValue={item.name} 
                             onChange={(event) => {setItem({
                                 name: event.target.value,
-                                category: item.category
+                                category: item.category,
+                                key: Date.now(),
                             })}}
                         />
                     </Form.Group>
@@ -63,7 +64,8 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                             defaultValue={item.catetory}
                             onChange={(event) => {setItem({
                                 name: item.name,
-                                category: event.target.value
+                                category: event.target.value,
+                                key: Date.now(),
                             })}}
                         >
                             <option>select item</option>
