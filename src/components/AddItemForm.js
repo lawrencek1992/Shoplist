@@ -71,7 +71,7 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                             <option>dairy</option>
                             <option>deli</option>
                             <option>frozen</option>
-                            <option>household goods</option>
+                            <option>household</option>
                             <option>meat</option>
                             <option>pantry</option>
                             <option>pharmacy</option>
