@@ -17,11 +17,23 @@ function App() {
     setShowModal(false);
   }
 
+  const addNewItem = (item) => {
+    console.log("You're in the addNewItem function!");
+    const updatedList = listItems.concat(item);
+    setListItems(updatedList);
+  }
+
   return (
     <div className="App">
       <List />
-      <AddItemForm showModal={showModal} handleHide={handleHide}/>
-      <div className="AddButton btn-danger bg-gradient" onClick={handleButtonClick}>
+      <AddItemForm 
+        showModal={showModal} 
+        handleHide={handleHide}
+        listItems={listItems}
+        addNewItem={addNewItem}
+        />
+      <div 
+        className="AddButton btn-danger bg-gradient" onClick={handleButtonClick}>
             +
         </div>
     </div>
