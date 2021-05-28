@@ -29,6 +29,22 @@
   display: none;
 }
 
+#bakery {
+  background-color: yellow;
+}
+
+#dairy {
+  background-color: cyan;
+}
+
+#deli {
+  background-color: orange;
+}
+
+#frozen {
+  background-color: blue;
+}
+
 .AddButton {
   color: white;
   font-size: 5em;
