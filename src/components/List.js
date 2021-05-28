@@ -5,7 +5,7 @@ const List = ({listItems}) => {
     return (
         <ListGroup>
             {listItems && listItems.map((item) => (
-                <ListGroup.Item className={item.category}>{item.name}</ListGroup.Item>
+                <ListGroup.Item id={item.category}>{item.name}</ListGroup.Item>
             ))}
         </ListGroup>
     )
