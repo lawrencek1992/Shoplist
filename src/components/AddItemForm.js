@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const AddItemForm = ({showModal, handleHide}) => {
+const AddItemForm = ({showModal, handleHide, addNewItem}) => {
+    const [item, setItem] = useState({});
 
+    const handleForm = () => {
+        if (item.name) {
+            addNewItem(item);
+            handleHide();
+        }
+    }
+    
     return (
         <Modal show={showModal} onHide={handleHide} centered>
             <Modal.Header id="modal">
@@ -17,14 +25,29 @@ const AddItemForm = ({showModal, handleHide}) => {
                         <Form.Label>
                             Item
                         </Form.Label>
-                        <Form.Control type="text" className="mb-3" />
+                        <Form.Control 
+                            type="text" className="mb-3" 
+                            value={item.name} defaultValue={item.name} 
+                            onChange={(event) => {setItem({
+                                name: event.target.value,
+                                category: item.category
+                            })}}
+                        />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>
                             Category
                         </Form.Label>
-                        <Form.Control as="select" className="mb-3">
-                            <option>none</option>
+                        <Form.Control 
+                            as="select" className="mb-3"
+                            value={item.category}
+                            defaultValue={item.catetory}
+                            onChange={(event) => {setItem({
+                                name: item.name,
+                                category: event.target.value
+                            })}}
+                        >
+                            <option>select item</option>
                             <option>produce</option>
                             <option>bakery</option>
                             <option>meat</option>
@@ -39,7 +62,7 @@ const AddItemForm = ({showModal, handleHide}) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer id="modal">
-                <Button className="btn btn-success" type="submit" onClick={handleHide}>
+                <Button className="btn btn-success" type="submit" onClick={() => {handleHide(); handleForm()}}>
                     Submit
                 </Button>
                 <Button className="btn btn-secondary" type="cancel" onClick={handleHide}>
