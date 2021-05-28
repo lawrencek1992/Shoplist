@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import './custom.scss';
 
+import Header from './components/Header';
 import List from './components/List';
 import AddItemForm from './components/AddItemForm';
 
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <List 
         listItems={listItems}
       />
