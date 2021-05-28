@@ -33,6 +33,22 @@
   border-radius: 50%;
 }
 
+/* Modal styles */
+#modal {
+  background: #000;
+  opacity: 0.8;
+  color: #fff;
+}
+
+#btn-close {
+  border: 1px solid #fff;
+}
+
+#btn-close:hover {
+  background-color: #198754;
+  border: 1px solid #198754;
+}
+
 /* Media queries for responsive design */
 /* Extra Large Screens */
 @media (max-width: 1600px) {
