@@ -7,7 +7,7 @@ import AddItemForm from './components/AddItemForm';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  // const [listItems, setListItems] = useState([]);
+  const [listItems, setListItems] = useState([]);
 
   const handleButtonClick = () => {
     setShowModal(true);
@@ -16,18 +16,6 @@ function App() {
   const handleHide = () => {
     setShowModal(false);
   }
-
-  // function handleClose () {
-  //   setShowModal(false);
-  // }
-
-  // const handleShow = () => {
-  //   setShow(true);
-  // }
-
-  // useEffect(() => {
-  //   handleShow();
-  // }, [show])
 
   return (
     <div className="App">
