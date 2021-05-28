@@ -33,9 +33,6 @@
   border-radius: 50%;
 }
 
-/* .App-header {
-} */
-
 /* Media queries for responsive design */
 /* Extra Large Screens */
 @media (max-width: 1600px) {
@@ -55,6 +52,15 @@
 @media (max-width: 768px) {
   .App {
     background-image: url('./media/portrait-background.jpg');
+  }
+  
+  .List {
+    top: 39%;
+    left: 43%;
+  }
+
+  .AddButton {
+    left: 18%;
   }
 }
 
