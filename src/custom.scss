@@ -111,6 +111,21 @@ $btn-close-color: #fff;
      background: $gray-800;
      height: 100vh;
  }
+
+ #login-form {
+     background: $dark;
+     color: $white;
+     position: absolute;
+     text-align: left;
+     top: 25%;
+     width: 50vw;
+     border-radius: 8px;
+     padding: 1em;
+ }
+
+ #login-button {
+     margin-right: 1em;
+ }
   
   /* Media queries for responsive design */
   /* Extra Large Screens */
