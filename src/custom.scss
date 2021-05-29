@@ -105,9 +105,14 @@ $btn-close-color: #fff;
     border: 1px solid #198754;
   }
 
-  /* Login page styling */
+/* Signup Modal Sytling */
+#signup-title {
+    color: $success;
+}
 
- .Login {
+
+/* Login Page styling */
+.Login {
      background: $gray-800;
      height: 100vh;
  }

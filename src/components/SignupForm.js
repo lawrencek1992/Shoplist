@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
     return (
@@ -12,13 +14,19 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
             centered
         >
             <Modal.Header id="modal">
-                <Modal.Title>
-                    Sign up for a Shoplist account!
+                <Modal.Title id="signup-title"> 
+                    <FontAwesomeIcon 
+                        icon={faShoppingBag} 
+                        id="shopping-icon" 
+                        style={{ "marginLeft": "10px", "marginRight": "2px",}}
+                    />
+                    Shoplist Account Signup!
                 </Modal.Title>
                 <Button 
                     type="close" 
-                    className="btn btn-close" id="btn-close" 
-                    ariaLabel="Close" 
+                    className="btn btn-close" 
+                    id="btn-close" 
+                    ariaLabel="Close"
                     onClick={() => { 
                         // function to clear the form 
                         handleHideSignupForm();
