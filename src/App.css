@@ -20,6 +20,7 @@
 .item {
   -webkit-animation: fadein .3s linear forwards;
   animation: fadein .3s linear forwards;
+  opacity: 0.85 !important;
 }
 .item-fadeout{
   display: flex;

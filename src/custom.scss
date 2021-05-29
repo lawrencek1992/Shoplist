@@ -4,6 +4,7 @@ $danger: #D63931;
 
 // Other variables:
 $btn-close-color: #fff;
+$modal-backdrop-opacity: 0.8;
 // $list-group-item-padding-x: 2em;
 
 // Import Bootstrap and its default variables
@@ -30,51 +31,51 @@ $btn-close-color: #fff;
   }
 
   .icon:hover {
-      color: $danger;
+      color: $white;
   }
 
   .icon:focus {
-      color: $danger;
+      color: $white;
   }
   
   #bakery {
-    background-color: yellow;
+    background-color: $yellow;
   }
   
   #dairy {
-    background-color: cyan;
+    background-color: $cyan;
   }
   
   #deli {
-    background-color: orange;
+    background-color: $orange;
   }
   
   #frozen {
-    background-color: blue;
+    background-color: $blue;
   }
 
   #household {
-      background-color: black;
+      background-color: $gray-700;
   }
 
   #meat {
-      background-color: red;
+      background-color: $red;
   }
 
   #pantry {
-      background-color: brown;
+      background-color: $purple;
   }
 
   #pharmacy {
-      background-color: indigo;
+      background-color: $pink;
   }
 
   #produce {
-      background-color: green;
+      background-color: $green;
   }
 
   #seafood {
-      background-color: forestgreen;
+      background-color: $teal;
   }
 
   .AddButton {
