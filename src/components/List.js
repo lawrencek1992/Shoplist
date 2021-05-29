@@ -19,7 +19,7 @@ const List = ({listItems, deleteItem}) => {
         <ListGroup className="list-group">
             {listItems && listItems
                 .map((item) => (
-                    <ListGroup.Item id={item.category} key={item.key} className={isFadingOut ? 'item-fadeout' : 'item'}> 
+                    <ListGroup.Item id={item.category} key={item.key} className={isFadingOut ? 'item-fadeout bg-gradient' : 'item bg-gradient'}> 
                         <Row>
                             <Col className="col-10">
                                 {item.name}
