@@ -18,28 +18,6 @@ import AddItemForm from './components/AddItemForm';
 import Login from './components/Login';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
-
-  const handleButtonClick = () => {
-    setShowModal(true);
-  }
-
-  const handleHide = () => {
-    setShowModal(false);
-  }
-
-  const addNewItem = (item) => {
-    const updatedList = listItems.concat(item);
-    setListItems(updatedList);
-  }
-
-  const deleteItem = (item) => {
-    const index = listItems.indexOf(item);
-    const updatedList = [...listItems];
-    updatedList.splice(index, 1);
-    setListItems(updatedList);
-  }
 
   return (
     <Router>
@@ -50,13 +28,7 @@ function App() {
             exact
             path="/"
             render={() => (
-              <Home
-                listItems={listItems}
-                deleteItem={deleteItem}
-                showModal={showModal}
-                addNewItem={addNewItem}
-                handleButtonClick={handleButtonClick}
-              />
+              <Home/>
             )}
           />
           <Route
