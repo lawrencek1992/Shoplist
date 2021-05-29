@@ -20,6 +20,14 @@ $btn-close-color: #fff;
     width: auto;
     color: #000;
   }
+
+  .icon:hover {
+      color: $danger;
+  }
+
+  .icon:focus {
+      color: $danger;
+  }
   
   #bakery {
     background-color: yellow;
@@ -61,8 +69,6 @@ $btn-close-color: #fff;
       background-color: forestgreen;
   }
 
-
-  
   .AddButton {
     color: white;
     font-size: 5em;
