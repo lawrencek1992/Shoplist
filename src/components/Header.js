@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Navbar, Button, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import SignupForm from './SignupForm';
 
 const Header = () => {
+    const [showSignupForm, setShowSignupForm] = useState(false);
+
     const history = useHistory();
+
+    const handleShowSignupForm = () => {
+        setShowSignupForm(true);
+    }
+
+    const handleHideSignupForm = () => {
+        setShowSignupForm(false);
+    }
 
     return (
         <Navbar 
@@ -24,6 +35,7 @@ const Header = () => {
                 <Button 
                     className="btn-danger text-right"
                     style={{ "marginRight": "10px", }}
+                    onClick={handleShowSignupForm}
                 >
                     Sign Up
                 </Button>
@@ -36,6 +48,10 @@ const Header = () => {
                     Login
                 </Button>
             </Nav>
+            <SignupForm 
+                showSignupForm={showSignupForm}
+                handleHideSignupForm={handleHideSignupForm}
+            />
         </Navbar>
     );
 }
