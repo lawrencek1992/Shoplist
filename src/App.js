@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
-import { useStorageState } from 'react-storage-hooks';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from 'react-router-dom';
 import './App.css';
 import './custom.scss';
 
 import Header from './components/Header';
 import Home from './components/Home';
-
-
-import List from './components/List';
-import AddItemForm from './components/AddItemForm';
 import Login from './components/Login';
 
 function App() {
