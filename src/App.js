@@ -10,6 +10,9 @@ import './App.css';
 import './custom.scss';
 
 import Header from './components/Header';
+import Home from './components/Home';
+
+
 import List from './components/List';
 import AddItemForm from './components/AddItemForm';
 import Login from './components/Login';
@@ -47,24 +50,13 @@ function App() {
             exact
             path="/"
             render={() => (
-              <>
-                <List 
-                  listItems={listItems}
-                  deleteItem={deleteItem}
-                />
-                <AddItemForm 
-                  showModal={showModal} 
-                  handleHide={handleHide}
-                  listItems={listItems}
-                  addNewItem={addNewItem}
-                />
-                <div 
-                  className="AddButton btn-danger bg-gradient" 
-                  onClick={handleButtonClick}
-                >
-                +
-                </div>
-              </>
+              <Home
+                listItems={listItems}
+                deleteItem={deleteItem}
+                showModal={showModal}
+                addNewItem={addNewItem}
+                handleButtonClick={handleButtonClick}
+              />
             )}
           />
           <Route

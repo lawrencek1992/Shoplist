@@ -13,12 +13,20 @@ $btn-close-color: #fff;
 .App {
     text-align: center;
     background-color: #fff;
+    height: 100vh;
+    width: auto;
+    color: #000;
+  }
+
+  .Home {
+    text-align: center;
+    background-color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     height: 100vh;
     width: auto;
-    color: #000;
+    color: #000; 
   }
 
   .icon:hover {
@@ -96,26 +104,32 @@ $btn-close-color: #fff;
     background-color: #198754;
     border: 1px solid #198754;
   }
+
+ /* Login page styling */
+
+ #login {
+     background-image: none;
+ }
   
   /* Media queries for responsive design */
   /* Extra Large Screens */
   @media (max-width: 1600px) {
-    .App {
-      background-image: url('./media/landscape-background.jpg');
+    .Home {
+        background-image: url('./media/landscape-background.jpg');
     }
   }
   
   /* Large tablets or small laptops */
   @media (max-width: 1200px) {
-    .App {
-      background-image: url('./media/landscape-background.jpg');
+    .Home {
+        background-image: url('./media/landscape-background.jpg');
     }
   }
   
   /* Regular sized tablets */
   @media (max-width: 768px) {
-    .App {
-      background-image: url('./media/portrait-background.jpg');
+    .Home {
+        background-image: url('./media/portrait-background.jpg');
     }
     
     .List {
@@ -130,15 +144,15 @@ $btn-close-color: #fff;
   
   /* Regular sized phones */
   @media (max-width: 480px) {
-    .App {
-      background-image: url('./media/portrait-background.jpg');
+    .Home {
+        background-image: url('./media/portrait-background.jpg');
     }
   }
   
   /* Extra small devices */
   @media (max-width: 380px) {
-    .App {
-      background-image: url('./media/portrait-background.jpg');
+    .Home {
+        background-image: url('./media/portrait-background.jpg');
     }
   }
   
