@@ -1,9 +1,12 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { Navbar, Button, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+    const history = useHistory();
+
     return (
         <Navbar 
             bg="dark" 
@@ -25,8 +28,10 @@ const Header = () => {
                     Sign Up
                 </Button>
                 <Button 
+                    className="btn"
                     variant="outline-success"
                     style={{ "marginRight": "10px", }}
+                    onClick={() => history.push('/login')}
                 >
                     Login
                 </Button>
