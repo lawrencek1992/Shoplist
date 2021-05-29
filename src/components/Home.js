@@ -5,15 +5,15 @@ import AddItemForm from './AddItemForm';
 import { Container } from 'react-bootstrap';
 
 const Home = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showAddItemForm, setShowAddItemForm] = useState(false);
   const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
 
   const handleButtonClick = () => {
-    setShowModal(true);
+    setShowAddItemForm(true);
   }
 
-  const handleHide = () => {
-    setShowModal(false);
+  const handleHideAddItemForm = () => {
+    setShowAddItemForm(false);
   }
 
   const addNewItem = (item) => {
@@ -34,8 +34,8 @@ const Home = () => {
                   deleteItem={deleteItem}
                 />
                 <AddItemForm 
-                  showModal={showModal} 
-                  handleHide={handleHide}
+                  showAddItemForm={showAddItemForm} 
+                  handleHideAddItemForm={handleHideAddItemForm}
                   listItems={listItems}
                   addNewItem={addNewItem}
                 />

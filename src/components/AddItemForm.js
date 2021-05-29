@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const AddItemForm = ({showModal, handleHide, addNewItem}) => {
+const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
     const [item, setItem] = useState({});
 
     const handleForm = () => {
         if (item.name) {
             addNewItem(item);
-            handleHide();
+            handleHideAddItemForm();
         }
     }
 
@@ -17,10 +17,10 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
     
     return (
         <Modal 
-            show={showModal} 
+            show={showAddItemForm} 
             onHide={() => { 
                 clearForm(); 
-                handleHide()
+                handleHideAddItemForm();
             }} 
             centered
         >
@@ -34,7 +34,7 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                     ariaLabel="Close" 
                     onClick={() => { 
                         clearForm(); 
-                        handleHide();
+                        handleHideAddItemForm();
                     }} 
                 />
             </Modal.Header>
@@ -88,7 +88,7 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                     className="btn btn-success" type="submit" 
                     onClick={() => {
                         clearForm();
-                        handleHide(); 
+                        handleHideAddItemForm(); 
                         handleForm();
                     }}>
                     Submit
@@ -97,7 +97,7 @@ const AddItemForm = ({showModal, handleHide, addNewItem}) => {
                     className="btn btn-secondary" type="cancel" 
                     onClick={() => {
                         clearForm();
-                        handleHide();
+                        handleHideAddItemForm();
                     }}>
                     Cancel
                 </Button>
