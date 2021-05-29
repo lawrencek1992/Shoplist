@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { useStorageState } from 'react-storage-hooks';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import './App.css';
 import './custom.scss';
 
 import Header from './components/Header';
 import List from './components/List';
 import AddItemForm from './components/AddItemForm';
+import Login from './components/Login';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -32,23 +39,42 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header />
-      <List 
-        listItems={listItems}
-        deleteItem={deleteItem}
-      />
-      <AddItemForm 
-        showModal={showModal} 
-        handleHide={handleHide}
-        listItems={listItems}
-        addNewItem={addNewItem}
-        />
-      <div 
-        className="AddButton btn-danger bg-gradient" onClick={handleButtonClick}>
-            +
-        </div>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <>
+                <List 
+                  listItems={listItems}
+                  deleteItem={deleteItem}
+                />
+                <AddItemForm 
+                  showModal={showModal} 
+                  handleHide={handleHide}
+                  listItems={listItems}
+                  addNewItem={addNewItem}
+                />
+                <div 
+                  className="AddButton btn-danger bg-gradient" 
+                  onClick={handleButtonClick}
+                >
+                +
+                </div>
+              </>
+            )}
+          />
+          <Route
+            exact
+            path="/login"
+            render={() => <Login />}
+          />
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
