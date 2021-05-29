@@ -25,10 +25,10 @@ function App() {
   }
 
   const deleteItem = (item) => {
-    console.log("You're in the deleteItem function!");
     const index = listItems.indexOf(item);
-    console.log("The index is " + index);
-    // setListItems(updatedList);
+    const updatedList = [...listItems];
+    updatedList.splice(index, 1);
+    setListItems(updatedList);
   }
 
   return (
