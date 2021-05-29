@@ -30,7 +30,8 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                 </Modal.Title>
                 <Button 
                     type="close" 
-                    className="btn btn-close" id="btn-close" 
+                    className="btn btn-close" 
+                    id="btn-close" 
                     ariaLabel="Close" 
                     onClick={() => { 
                         clearForm(); 
@@ -45,8 +46,10 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                             Item
                         </Form.Label>
                         <Form.Control 
-                            type="text" className="mb-3" 
-                            value={item.name} defaultValue={item.name} 
+                            type="text" 
+                            className="mb-3" 
+                            value={item.name} 
+                            defaultValue={item.name} 
                             onChange={(event) => {setItem({
                                 name: event.target.value,
                                 category: item.category,
@@ -85,7 +88,8 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
             </Modal.Body>
             <Modal.Footer id="modal">
                 <Button 
-                    className="btn btn-success" type="submit" 
+                    className="btn btn-success" 
+                    type="submit" 
                     onClick={() => {
                         clearForm();
                         handleHideAddItemForm(); 
@@ -94,7 +98,8 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                     Submit
                 </Button>
                 <Button 
-                    className="btn btn-secondary" type="cancel" 
+                    className="btn btn-secondary" 
+                    type="cancel" 
                     onClick={() => {
                         clearForm();
                         handleHideAddItemForm();
