@@ -105,10 +105,11 @@ $btn-close-color: #fff;
     border: 1px solid #198754;
   }
 
- /* Login page styling */
+  /* Login page styling */
 
- #login {
-     background-image: none;
+ .Login {
+     background: $gray-800;
+     height: 100vh;
  }
   
   /* Media queries for responsive design */
