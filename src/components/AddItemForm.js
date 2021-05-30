@@ -40,7 +40,11 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                 />
             </Modal.Header>
             <Modal.Body id="modal">
-                <Form>
+                <Form onSubmit={() => {
+                        clearForm();
+                        handleHideAddItemForm(); 
+                        handleForm();
+                    }}>
                     <Form.Group>
                         <Form.Label>
                             Item
@@ -100,10 +104,7 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                 <Button 
                     className="btn btn-secondary" 
                     type="cancel" 
-                    onClick={() => {
-                        clearForm();
-                        handleHideAddItemForm();
-                    }}>
+                   >
                     Cancel
                 </Button>
             </Modal.Footer>
