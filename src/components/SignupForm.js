@@ -13,14 +13,14 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
             }}
             centered
         >
-            <Modal.Header id="modal">
+            <Modal.Header id="signup-modal">
                 <Modal.Title id="signup-title"> 
                     <FontAwesomeIcon 
                         icon={faShoppingBag} 
                         id="shopping-icon" 
                         style={{ "marginLeft": "10px", "marginRight": "2px",}}
                     />
-                    Shoplist Account Signup!
+                    Shoplist Free Account Signup!
                 </Modal.Title>
                 <Button 
                     type="close" 
@@ -33,7 +33,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     }} 
                 />
             </Modal.Header>
-            <Modal.Body id="modal">
+            <Modal.Body id="signup-modal">
                 <Form>
                     <Form.Group>
                         <Form.Label>
@@ -58,10 +58,9 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     <br />
                 </Form>
             </Modal.Body>
-            <Modal.Footer id="modal">
+            <Modal.Footer id="signup-modal">
                 <Button
-                    className="btn"
-                    variant="outline-danger"
+                    className="btn btn-success"
                     type="submit"
                     onClick={() => {
                         // function to clear the form
@@ -72,8 +71,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     Sign Up
                 </Button>
                 <Button
-                    className="btn"
-                    variant="outline-secondary"
+                    className="btn btn-secondary"
                     type="cancel"
                     onClick={() => {
                         // function to clear the form
