@@ -139,10 +139,14 @@ $modal-backdrop-opacity: 0.8;
 /* AccountSuccess Styling */
 #success-modal {
   background: $success;
-  color: $black;
+  color: $white;
   opacity: 0.8;
 }
 
+// #login-redirect{
+//   background-color: $gray-900;
+//   border: $white;
+// }
 
 /* Login Page styling */
 .Login {
