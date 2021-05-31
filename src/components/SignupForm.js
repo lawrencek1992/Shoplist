@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
+    const [user, setUser] = useState({});
+
+    const handleSignUp = () => {
+        // create a user
+    }
+
+    const clearForm = () => setUser({})
+
     return (
         <Modal
             show={showSignupForm}
             onHide={() => {
-                // function to clear the form
                 handleHideSignupForm();
+                clearForm();
             }}
             centered
         >
@@ -28,32 +36,71 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     id="btn-close" 
                     ariaLabel="Close"
                     onClick={() => { 
-                        // function to clear the form 
                         handleHideSignupForm();
+                        clearForm();
                     }} 
                 />
             </Modal.Header>
             <Modal.Body id="signup-modal">
-                <Form>
+                <Form onSubmit={() => {
+                        handleSignUp();
+                        clearForm();
+                        handleHideSignupForm();
+                    }}
+                >
                     <Form.Group>
                         <Form.Label>
                             Email Address:
                         </Form.Label>
-                        <Form.Control type="email" />
+                        <Form.Control 
+                            type="text"
+                            value={user.email}
+                            defaultValue={user.email} 
+                            onChange={(event) => {
+                                setUser({
+                                    email: event.target.value,
+                                    password: user.password,
+                                    confirmPassword: user.confirmPassword,
+                                })
+                            }}
+                        />
                     </Form.Group>
                     <br />
                     <Form.Group>
                         <Form.Label>
                             Create Password:
                         </Form.Label>
-                        <Form.Control type="text" />
+                        <Form.Control 
+                            type="text"
+                            value={user.password}
+                            defaultValue={user.password}
+                            onChange={(event) => {
+                                setUser({
+                                    email: user.email,
+                                    password: event.target.value,
+                                    confirmPassword: user.confirmPassword,
+                                })
+                            }}
+                        />
                     </Form.Group>
                     <br />
                     <Form.Group>
                         <Form.Label>
                             Confirm Password:
                         </Form.Label>
-                        <Form.Control type="text" />
+                        <Form.Control 
+                            type="text" 
+                            value={user.confirmPassword}
+                            defaultValue={user.confirmPassword}
+                            onChange={(event) => {
+                                setUser({
+                                    email: user.email,
+                                    password: user.password,
+                                    confirmPassword: event.target.value,
+
+                                })
+                            }}
+                        />
                     </Form.Group>
                     <br />
                 </Form>
@@ -63,9 +110,9 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     className="btn btn-success"
                     type="submit"
                     onClick={() => {
-                        // function to clear the form
-                        // function to create new user with Firebase
+                        handleSignUp();
                         handleHideSignupForm();
+                        clearForm();
                     }}
                 >
                     Sign Up
@@ -74,7 +121,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     className="btn btn-secondary"
                     type="cancel"
                     onClick={() => {
-                        // function to clear the form
+                        setUser({});
                         handleHideSignupForm();
                     }}
                 >
