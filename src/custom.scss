@@ -19,92 +19,111 @@ $modal-backdrop-opacity: 0.8;
     color: #000;
   }
 
-  .Home {
-    text-align: center;
-    background-color: #fff;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 100vh;
-    width: auto;
-    color: #000; 
-  }
+.Home {
+  text-align: center;
+  background-color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  width: auto;
+  color: #000; 
+}
 
-  .icon:hover {
-      color: $white;
-  }
+/* List.js styling */
+.icon:hover {
+    color: $white;
+}
 
-  .icon:focus {
-      color: $white;
-  }
+.icon:focus {
+    color: $white;
+}
+
+#bakery {
+  background-color: $yellow;
+}
+
+#dairy {
+  background-color: $cyan;
+}
+
+#deli {
+  background-color: $orange;
+}
+
+#frozen {
+  background-color: $blue;
+}
+
+#household {
+    background-color: $gray-700;
+}
+
+#meat {
+    background-color: $red;
+}
+
+#pantry {
+    background-color: $purple;
+}
+
+#pharmacy {
+    background-color: $pink;
+}
+
+#produce {
+    background-color: $green;
+}
+
+#seafood {
+    background-color: $teal;
+}
+
+.item-fade-enter {
+  opacity: 0.01;
+}
+
+.item-fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.item-fade-exit {
+  opacity: 1;
+}
+
+.item-fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
+
+.AddButton {
+  color: white;
+  font-size: 5em;
+  position: absolute;
+  top: 75%;
+  left: 39.5%;
+  height: 1.5em;
+  width: 1.5em;
+  line-height: 1.3em;
+  border-radius: 50%;
+}
   
-  #bakery {
-    background-color: $yellow;
-  }
-  
-  #dairy {
-    background-color: $cyan;
-  }
-  
-  #deli {
-    background-color: $orange;
-  }
-  
-  #frozen {
-    background-color: $blue;
-  }
+/* Modal styles */
+#modal {
+  background: #000;
+  opacity: 0.8;
+  color: #fff;
+}
 
-  #household {
-      background-color: $gray-700;
-  }
+#btn-close {
+  border: 1px solid #fff;
+}
 
-  #meat {
-      background-color: $red;
-  }
-
-  #pantry {
-      background-color: $purple;
-  }
-
-  #pharmacy {
-      background-color: $pink;
-  }
-
-  #produce {
-      background-color: $green;
-  }
-
-  #seafood {
-      background-color: $teal;
-  }
-
-  .AddButton {
-    color: white;
-    font-size: 5em;
-    position: absolute;
-    top: 75%;
-    left: 39.5%;
-    height: 1.5em;
-    width: 1.5em;
-    line-height: 1.3em;
-    border-radius: 50%;
-  }
-  
-  /* Modal styles */
-  #modal {
-    background: #000;
-    opacity: 0.8;
-    color: #fff;
-  }
-  
-  #btn-close {
-    border: 1px solid #fff;
-  }
-  
-  #btn-close:hover {
-    background-color: #198754;
-    border: 1px solid #198754;
-  }
+#btn-close:hover {
+  background-color: #198754;
+  border: 1px solid #198754;
+}
 
 /* Signup Modal Sytling */
 #signup-title {
