@@ -1,3 +1,18 @@
+# Sources:
+* React Transition Group doc on Reactcommunity.org
+    Regular documentation on reactjs.org/docs/animation and the README on the Github repositiory kept trying to get me to import CSSTransitionGroup, which isn't exported by the node modules folder. Node Modules only exports CSSTransition and TransitionGroup. This documentation showed how to use those exports to get the transition group working. 
+
+    https://reactcommunity.org/react-transition-group/
+
+* Pexels.com for free stock photos --> Karolina Grabowska
+    https://www.pexels.com/photo/sheet-of-paper-put-near-assortment-of-fresh-ingredients-4033296/
+
+    https://www.pexels.com/photo/empty-paper-and-tied-pasta-on-kitchen-table-4033404/
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
