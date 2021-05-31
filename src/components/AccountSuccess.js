@@ -1,9 +1,11 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { Modal, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const AccountSuccess = ({ showAccountSuccess, handleHideAccountSuccess, user }) => {
+
+    const history = useHistory();
+
     return (
         <Modal
             show={showAccountSuccess}
@@ -12,7 +14,7 @@ const AccountSuccess = ({ showAccountSuccess, handleHideAccountSuccess, user }) 
             }}
             centered
         >
-            <Modal.Header id="success-modal">
+            <Modal.Header id="success-modal"> 
                 <Button 
                     type="close"
                     className="btn btn-close" 
@@ -24,12 +26,16 @@ const AccountSuccess = ({ showAccountSuccess, handleHideAccountSuccess, user }) 
                 />
             </Modal.Header>
             <Modal.Body id="success-modal">
-                    Thank you for creating a Shoplist Account {user.name}! Please log in to add items to your shopping list. 
+                Thank you for creating a Shoplist account, <strong>{user.name}! </strong>
+                Please log in to add items to your shopping list.
             </Modal.Body>
             <Modal.Footer id="success-modal">
                     <Button
+                        className="btn btn-secondary"
+                        id="login-redirect"
                         onClick={() => {
                             handleHideAccountSuccess();
+                            history.push('/login');
                         }}
                     >
                         Login
