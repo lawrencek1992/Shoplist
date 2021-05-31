@@ -109,7 +109,7 @@ $modal-backdrop-opacity: 0.8;
   border-radius: 50%;
 }
   
-/* Modal styles */
+/* AddItemForm styles */
 #modal {
   background: #000;
   opacity: 0.8;
@@ -126,8 +126,14 @@ $modal-backdrop-opacity: 0.8;
 }
 
 /* Signup Modal Sytling */
+#signup-modal {
+  background: $danger;
+  color: $black;
+  opacity: 0.8;
+}
+
 #signup-title {
-    color: $success;
+    color: $white;
 }
 
 
