@@ -2,10 +2,12 @@ import React, { useState, useRef } from 'react';
 import { Modal, Button, Form, Overlay, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import firebase from '../firebase.js';
 
 const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuccess, user, setUser }) => {
     const [validated, setValidated] = useState(false);
     const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
+
     const target = useRef(null);
 
     const handleSignUp = (event) => {
@@ -25,11 +27,20 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                 }, 2000);
             }
             if (user.password === user.confirmPassword) {
-                // All of the functions to close the AccountSignup modal, clear the form, save user in Firebase, and open the AccountSuccess modal go here
                     handleHideSignupForm();
                     handleShowAccountSuccess();
                     // firebase functions
                         // Createuserwithemailandpassword
+                    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                        .then((userCredential) => {
+                            const newUser = userCredential.user;
+                            // ...
+                        })
+                        .catch((error) => {
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+                            console.log(errorCode, ": ", errorMessage)
+                        });
             }
         }   
     };
