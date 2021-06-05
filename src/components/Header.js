@@ -4,9 +4,12 @@ import { Navbar, Button, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import SignupForm from './SignupForm';
+import AccountSuccess from './AccountSuccess';
 
 const Header = () => {
     const [showSignupForm, setShowSignupForm] = useState(false);
+    const [showAccountSuccess, setShowAccountSuccess] = useState(false);
+    const [user, setUser] = useState({});
 
     const history = useHistory();
 
@@ -16,6 +19,14 @@ const Header = () => {
 
     const handleHideSignupForm = () => {
         setShowSignupForm(false);
+    }
+
+    const handleShowAccountSuccess = () => {
+        setShowAccountSuccess(true);
+    }
+
+    const handleHideAccountSuccess = () => {
+        setShowAccountSuccess(false);
     }
 
     return (
@@ -51,6 +62,14 @@ const Header = () => {
             <SignupForm 
                 showSignupForm={showSignupForm}
                 handleHideSignupForm={handleHideSignupForm}
+                handleShowAccountSuccess={handleShowAccountSuccess}
+                user={user}
+                setUser={setUser}
+            />
+            <AccountSuccess
+                showAccountSuccess={showAccountSuccess}
+                handleHideAccountSuccess={handleHideAccountSuccess}
+                user={user}
             />
         </Navbar>
     );
