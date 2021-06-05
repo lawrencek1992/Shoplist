@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import { Modal, Button } from 'react-bootstrap';
 
-const AccountSuccess = ({ showAccountSuccess, handleHideAccountSuccess, user }) => {
+const AccountSuccess = ({ showAccountSuccess, handleHideAccountSuccess, user }) => { 
 
     const history = useHistory();
 

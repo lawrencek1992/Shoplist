@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import React, { useState, useRef } from 'react';
+import { Modal, Button, Form, Overlay, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuccess, user, setUser }) => {
     const [validated, setValidated] = useState(false);
+    const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
+    const target = useRef(null);
 
     const handleSignUp = (event) => {
         const form = event.currentTarget;
@@ -17,24 +19,20 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
         }
         if (user.name && user.email && user.password && user.confirmPassword) {
             if (user.password !== user.confirmPassword) {
-                console.log("Passwords do not match!");
-                // Show tooltip that passwords don't match
-            } else {
-                console.log("Passwords match!");
+                setShowPasswordTooltip(true);
+                setTimeout(() => {
+                    setShowPasswordTooltip(false);
+                }, 2000);
+            }
+            if (user.password === user.confirmPassword) {
                 // All of the functions to close the AccountSignup modal, clear the form, save user in Firebase, and open the AccountSuccess modal go here
-                    // clearForm();
-                    // handleHideSignupForm();
-                    // handleShowAccountSuccess();
+                    handleHideSignupForm();
+                    handleShowAccountSuccess();
                     // firebase functions
+                        // Createuserwithemailandpassword
             }
         }   
-        }
-        // STEP 2:
-            // Check to see if the password and confirmPassword strings (stored in state) match
-            // Show tool tip if they don't
-        // Createuserwithemailandpassword
-
-    const clearForm = () => setUser({});
+    };
 
     return (
         <>
@@ -42,7 +40,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                 show={showSignupForm}
                 onHide={() => {
                     handleHideSignupForm();
-                    clearForm();
                 }}
                 centered
             >
@@ -62,7 +59,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                         ariaLabel="Close"
                         onClick={() => { 
                             handleHideSignupForm();
-                            clearForm();
                         }} 
                     />
                 </Modal.Header>
@@ -102,7 +98,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Label>
                             <Form.Control 
                                 required
-                                type="text"
+                                type="email"
                                 value={user.email}
                                 defaultValue={user.email} 
                                 onChange={(event) => {
@@ -126,7 +122,8 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Label>
                             <Form.Control 
                                 required
-                                type="text"
+                                ref={target}
+                                type="password"
                                 value={user.password}
                                 defaultValue={user.password}
                                 onChange={(event) => {
@@ -149,23 +146,34 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Label>
                             <Form.Control 
                                 required
-                                type="text" 
+                                ref={target}
+                                type="password" 
                                 value={user.confirmPassword}
                                 defaultValue={user.confirmPassword}
                                 onChange={(event) => {
+                                    event.preventDefault();
                                     setUser({
                                         name: user.name,
                                         email: user.email,
                                         password: user.password,
                                         confirmPassword: event.target.value,
-
-                                    })
+                                    });
                                 }}
                             />
                             <Form.Control.Feedback type="invalid">
                                 Please confirm password
                             </Form.Control.Feedback>
                         </Form.Group>
+                        <Overlay 
+                        target={target.current}
+                        show={showPasswordTooltip} 
+                        placement="top">
+                        {(props) => (
+                            <Tooltip {...props}>
+                                Passwords do not match!
+                            </Tooltip>
+                        )}
+                    </Overlay>
                         <br />
                     </Form>
                 </Modal.Body>
