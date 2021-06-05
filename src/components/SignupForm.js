@@ -10,6 +10,8 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
 
     const target = useRef(null);
 
+    const database = firebase.database();
+
     const handleSignUp = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -29,12 +31,17 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
             if (user.password === user.confirmPassword) {
                     handleHideSignupForm();
                     handleShowAccountSuccess();
-                    // firebase functions
-                        // Createuserwithemailandpassword
+                    // Create user with email and password in firebase
                     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                         .then((userCredential) => {
-                            const newUser = userCredential.user;
-                            // ...
+                            // const newUser = userCredential.user;
+                            // console.log(newUser);
+                            // Create object in the realtime database to store the shopping list for newUser.
+                            const newUser = firebase.auth().currentUser.uid;
+                            console.log(newUser);
+                            firebase.database().ref('users/' + newUser).set({
+                                items: "Look at all the items!",
+                            });
                         })
                         .catch((error) => {
                             var errorCode = error.code;
