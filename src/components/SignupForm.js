@@ -2,22 +2,39 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import AccountSuccess from './AccountSuccess';
 
-const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
-    const [user, setUser] = useState({});
-    const [showAccountSuccess, setShowAccountSuccess] = useState(false);
+const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuccess, user, setUser }) => {
+    const [validated, setValidated] = useState(false);
 
-    const handleSignUp = () => {
-        // Create a user in firebase with email and password
-        // Create a folder in the realtime database for the user's email address (you'll use this later to store their shopping list). 
-    }
+    const handleSignUp = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+            event.preventDefault();
+            setValidated(true);
+        }
+        if (user.name && user.email && user.password && user.confirmPassword) {
+            if (user.password !== user.confirmPassword) {
+                console.log("Passwords do not match!");
+                // Show tooltip that passwords don't match
+            } else {
+                console.log("Passwords match!");
+                // All of the functions to close the AccountSignup modal, clear the form, save user in Firebase, and open the AccountSuccess modal go here
+                    // clearForm();
+                    // handleHideSignupForm();
+                    // handleShowAccountSuccess();
+                    // firebase functions
+            }
+        }   
+        }
+        // STEP 2:
+            // Check to see if the password and confirmPassword strings (stored in state) match
+            // Show tool tip if they don't
+        // Createuserwithemailandpassword
 
     const clearForm = () => setUser({});
-
-    const handleHideAccountSuccess = () => {
-        setShowAccountSuccess(false);
-    }
 
     return (
         <>
@@ -50,18 +67,17 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     />
                 </Modal.Header>
                 <Modal.Body id="signup-modal">
-                    <Form onSubmit={() => {
-                            handleSignUp();
-                            clearForm();
-                            handleHideSignupForm();
-                            setShowAccountSuccess(true);
-                        }}
+                    <Form 
+                        noValidate 
+                        validated={validated}
+                        onSubmit={handleSignUp}
                     >
-                        <Form.Group>
+                        <Form.Group controlId="validationCustom01">
                             <Form.Label>
                                 Name:
                             </Form.Label>
                             <Form.Control
+                                required
                                 type="text"
                                 value={user.name}
                                 defaultValue={user.name}
@@ -73,13 +89,19 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                                         confirmPassword: user.confirmPassword,
                                     })
                                 }}
+                                placeholder="e.g. Maria"
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Name required
+                            </Form.Control.Feedback>
                         </Form.Group>
-                        <Form.Group>
+                        <br />
+                        <Form.Group controlId="validationCustom02">
                             <Form.Label>
                                 Email Address:
                             </Form.Label>
                             <Form.Control 
+                                required
                                 type="text"
                                 value={user.email}
                                 defaultValue={user.email} 
@@ -91,14 +113,19 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                                         confirmPassword: user.confirmPassword,
                                     })
                                 }}
+                                placeholder="example@gmail.com"
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Email required
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <br />
-                        <Form.Group>
+                        <Form.Group controlId="validationCustom03">
                             <Form.Label>
                                 Create Password:
                             </Form.Label>
                             <Form.Control 
+                                required
                                 type="text"
                                 value={user.password}
                                 defaultValue={user.password}
@@ -111,13 +138,17 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                                     })
                                 }}
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Password required
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <br />
-                        <Form.Group>
+                        <Form.Group controlId="validationCustom04">
                             <Form.Label>
                                 Confirm Password:
                             </Form.Label>
                             <Form.Control 
+                                required
                                 type="text" 
                                 value={user.confirmPassword}
                                 defaultValue={user.confirmPassword}
@@ -131,6 +162,9 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                                     })
                                 }}
                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please confirm password
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <br />
                     </Form>
@@ -139,12 +173,10 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     <Button
                         className="btn btn-success"
                         type="submit"
-                        onClick={() => {
-                            handleSignUp();
-                            handleHideSignupForm();
-                            clearForm();
-                            setShowAccountSuccess(true);
+                        onClick={(event) => {
+                            handleSignUp(event);
                         }}
+                        
                     >
                         Sign Up
                     </Button>
@@ -160,11 +192,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <AccountSuccess 
-                    showAccountSuccess={showAccountSuccess}
-                    handleHideAccountSuccess={handleHideAccountSuccess}
-                    user={user}
-            />
         </>
     )
 }
