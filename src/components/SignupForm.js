@@ -7,8 +7,11 @@ import firebase from '../firebase.js';
 const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuccess, user, setUser }) => {
     const [validated, setValidated] = useState(false);
     const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
+    const [showAlertTooltip, setShowAlertTooltip] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const target = useRef(null);
+    const signUpButton = useRef(null);
+    const passwordConfirmation = useRef(null);
 
     const database = firebase.database();
 
@@ -29,24 +32,32 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                 }, 2000);
             }
             if (user.password === user.confirmPassword) {
-                    handleHideSignupForm();
-                    handleShowAccountSuccess();
                     // Create user with email and password in firebase
                     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                         .then((userCredential) => {
-                            // const newUser = userCredential.user;
-                            // console.log(newUser);
                             // Create object in the realtime database to store the shopping list for newUser.
                             const newUser = firebase.auth().currentUser.uid;
-                            console.log(newUser);
-                            firebase.database().ref('users/' + newUser).set({
+                            database.ref('users/' + newUser).set({
                                 items: "Look at all the items!",
                             });
                         })
                         .catch((error) => {
-                            var errorCode = error.code;
-                            var errorMessage = error.message;
-                            console.log(errorCode, ": ", errorMessage)
+                            setErrorMessage(error.message);
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            console.log(errorCode, ": ", errorMessage);
+                            // Alert user if there are errors.
+                            if (errorCode) {
+                                setShowAlertTooltip(true);
+                                setTimeout(() => {
+                                    setShowAlertTooltip(false);
+                                }, 3000);
+                            }
+                            // If there are no errors, submit form and continue.
+                            if (!errorCode) {
+                                handleHideSignupForm();
+                                handleShowAccountSuccess();
+                            }
                         });
             }
         }   
@@ -140,7 +151,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Label>
                             <Form.Control 
                                 required
-                                ref={target}
+                                ref={passwordConfirmation}
                                 type="password"
                                 value={user.password}
                                 defaultValue={user.password}
@@ -164,7 +175,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Label>
                             <Form.Control 
                                 required
-                                ref={target}
+                                ref={passwordConfirmation}
                                 type="password" 
                                 value={user.confirmPassword}
                                 defaultValue={user.confirmPassword}
@@ -183,20 +194,21 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Overlay 
-                        target={target.current}
-                        show={showPasswordTooltip} 
-                        placement="top">
-                        {(props) => (
-                            <Tooltip {...props}>
-                                Passwords do not match!
-                            </Tooltip>
-                        )}
-                    </Overlay>
+                            target={passwordConfirmation.current}
+                            show={showPasswordTooltip} 
+                            placement="top">
+                            {(props) => (
+                                <Tooltip {...props}>
+                                    Passwords do not match!
+                                </Tooltip>
+                            )}
+                        </Overlay>
                         <br />
                     </Form>
                 </Modal.Body>
                 <Modal.Footer id="signup-modal">
                     <Button
+                        ref={signUpButton}
                         className="btn btn-success"
                         type="submit"
                         onClick={(event) => {
@@ -206,6 +218,16 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                     >
                         Sign Up
                     </Button>
+                    <Overlay 
+                        target={signUpButton.current}
+                        show={showAlertTooltip} 
+                        placement="top">
+                        {(props) => (
+                            <Tooltip {...props}>
+                                {errorMessage}
+                            </Tooltip>
+                        )}
+                    </Overlay>
                     <Button
                         className="btn btn-secondary"
                         type="cancel"
