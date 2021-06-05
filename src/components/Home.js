@@ -4,7 +4,7 @@ import List from './List';
 import AddItemForm from './AddItemForm';
 import { Container } from 'react-bootstrap';
 
-const Home = () => {
+const Home = (user) => {
   const [showAddItemForm, setShowAddItemForm] = useState(false);
   const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
 

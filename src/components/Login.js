@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Container, Form, Button } from 'react-bootstrap';
+// import UserContext from '../context/UserContext';
 // import firebase from '../firebase.js';
 
-const Login = () => {
+const Login = (onLogin) => {
     const [loginCreds, setLoginCreds] = useState({});
 
     const history = useHistory();

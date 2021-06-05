@@ -6,10 +6,9 @@ import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import SignupForm from './SignupForm';
 import AccountSuccess from './AccountSuccess';
 
-const Header = () => {
+const Header = ({ user, setUser, onLogout }) => {
     const [showSignupForm, setShowSignupForm] = useState(false);
     const [showAccountSuccess, setShowAccountSuccess] = useState(false);
-    const [user, setUser] = useState({});
 
     const history = useHistory();
 
@@ -43,21 +42,36 @@ const Header = () => {
                 Shoplist
             </Navbar.Brand>
             <Nav>
-                <Button 
-                    className="btn-danger text-right"
-                    style={{ "marginRight": "10px", }}
-                    onClick={handleShowSignupForm}
-                >
-                    Sign Up
-                </Button>
-                <Button 
-                    className="btn"
-                    variant="outline-success"
-                    style={{ "marginRight": "10px", }}
-                    onClick={() => history.push('/login')}
-                >
-                    Login
-                </Button>
+                {!user.isAuthenticated
+                    ? (
+                        <>
+                            <Button 
+                                className="btn-danger text-right"
+                                style={{ "marginRight": "10px", }}
+                                onClick={handleShowSignupForm}
+                            >
+                                Sign Up
+                            </Button>
+                            <Button 
+                                className="btn"
+                                variant="outline-success"
+                                style={{ "marginRight": "10px", }}
+                                onClick={() => history.push('/login')}
+                            >
+                                Login
+                            </Button>
+                        </>
+                        )
+                    : ( 
+                        <Button
+                            className="btn-danger text-right"
+                            variant="outline-danger"
+                            // onClick function to log out the user
+                        >
+                            Logout
+                        </Button>
+                    )
+                }
             </Nav>
             <SignupForm 
                 showSignupForm={showSignupForm}
