@@ -13,7 +13,9 @@ const Home = (user) => {
   const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
 
   const handleButtonClick = () => {
-    setShowAddItemForm(true);
+    if (firebase.auth().currentUser) {
+      setShowAddItemForm(true);
+    }
   }
 
   const handleHideAddItemForm = () => {
