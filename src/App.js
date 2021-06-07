@@ -20,7 +20,7 @@ function App() {
       .auth()
       .signOut()
       .then(() => {
-        setUser({ isAuthenticated: false});
+        setUser({});
       })
       .catch((error) => console.error(error));
   };
