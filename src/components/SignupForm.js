@@ -38,8 +38,8 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             // Create object in the realtime database to store the credentials and shopping list for newUser.
                             const newUser = firebase.auth().currentUser.uid;
                             database.ref('users/' + newUser).set({
-                                name: user.name,
                                 email: user.email,
+                                name: user.name,
                                 items: '',
                             });
                             handleHideSignupForm();
