@@ -67,6 +67,7 @@ const Header = ({ user, setUser, onLogout }) => {
                     <Button
                     className="btn text-right"
                     variant="outline-danger"
+                    style={{ "marginRight": "10px", }}
                     onClick={onLogout}
                 >
                     Logout
