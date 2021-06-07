@@ -14,7 +14,7 @@ $modal-backdrop-opacity: 0.8;
     text-align: center;
     background-color: #fff;
     height: 100vh;
-    width: auto;
+    width: 100vw;
     color: #000;
   }
 
@@ -25,11 +25,27 @@ $modal-backdrop-opacity: 0.8;
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
-  width: auto;
   color: #000; 
 }
 
-/* List.js styling */
+/* Prompt styling */
+.prompt {
+  position: absolute;
+  left: 57%;
+  top: 25%;
+  width: 10em;
+  font-size: 2em;
+  color: $danger;
+}
+
+.up-arrow {
+  height: 28vh;
+  position: absolute;
+  left: 83%;
+  top: 15%;
+}
+
+/* List styling */
 .icon:hover {
     color: $white;
 }
