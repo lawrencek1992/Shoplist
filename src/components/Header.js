@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import SignupForm from './SignupForm';
 import AccountSuccess from './AccountSuccess';
+import firebase from '../firebase';
 
 const Header = ({ user, setUser, onLogout }) => {
     const [showSignupForm, setShowSignupForm] = useState(false);
@@ -42,36 +43,36 @@ const Header = ({ user, setUser, onLogout }) => {
                 Shoplist
             </Navbar.Brand>
             <Nav>
-                {!user.isAuthenticated
-                    ? (
-                        <>
-                            <Button 
-                                className="btn-danger text-right"
-                                style={{ "marginRight": "10px", }}
-                                onClick={handleShowSignupForm}
-                            >
-                                Sign Up
-                            </Button>
-                            <Button 
-                                className="btn"
-                                variant="outline-success"
-                                style={{ "marginRight": "10px", }}
-                                onClick={() => history.push('/login')}
-                            >
-                                Login
-                            </Button>
-                        </>
-                        )
-                    : ( 
-                        <Button
+            { !firebase.auth().currentUser 
+                ? (
+                    <>
+                        <Button 
                             className="btn-danger text-right"
-                            variant="outline-danger"
-                            // onClick function to log out the user
+                            style={{ "marginRight": "10px", }}
+                            onClick={handleShowSignupForm}
                         >
-                            Logout
+                            Sign Up
                         </Button>
-                    )
-                }
+                        <Button 
+                            className="btn"
+                            variant="outline-success"
+                            style={{ "marginRight": "10px", }}
+                            onClick={() => history.push('/login')}
+                        >
+                            Login
+                        </Button>
+                    </>
+                )
+                : (
+                    <Button
+                    className="btn text-right"
+                    variant="outline-danger"
+                    onClick={onLogout}
+                >
+                    Logout
+                </Button>
+                )
+            }
             </Nav>
             <SignupForm 
                 showSignupForm={showSignupForm}
