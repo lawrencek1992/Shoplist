@@ -12,8 +12,6 @@
 * Font Awesome Icons for shopping bag icon in logo/name 
 
 * Flaticon free arrow icons by Freepik
-    https://www.flaticon.com/free-icon/curved-next-arrow_20815
-
     https://www.flaticon.com/free-icon/curved-up-arrow_20901 
 
 
