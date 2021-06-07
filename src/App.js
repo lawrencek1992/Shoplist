@@ -14,20 +14,6 @@ import Login from './components/Login';
 
 function App() {
   const [user, setUser] = useState({});
-
-  const onLogin = (email, password) => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((response) => {
-          setUser({
-            email: response.user["email"],
-            isAuthenticated: true,
-            // set userID from the uid in firebase (or something?)
-          });
-      })
-      .catch((error)  => console.error(error));
-  };
   
   const onLogout = () => {
     firebase
@@ -58,7 +44,7 @@ function App() {
             <Route
               exact
               path="/login"
-              render={() => <Login onLogin={onLogin} />}
+              render={() => <Login user={user} setUser={setUser} />}
             />
             </Switch>
         </div>
