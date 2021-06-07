@@ -5,7 +5,6 @@ $danger: #D63931;
 // Other variables:
 $btn-close-color: #fff;
 $modal-backdrop-opacity: 0.8;
-$form-feedback-invalid-color: #e9ecef;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
@@ -111,9 +110,9 @@ $form-feedback-invalid-color: #e9ecef;
   
 /* AddItemForm styles */
 #modal {
-  background: #000;
+  background: $black;
   opacity: 0.8;
-  color: #fff;
+  color: $white;
 }
 
 #btn-close {
@@ -127,13 +126,13 @@ $form-feedback-invalid-color: #e9ecef;
 
 /* Signup Modal Styling */
 #signup-modal {
-  background: $danger;
-  color: $black;
+  background: $black;
+  color: $white;
   opacity: 0.8;
 }
 
 #signup-title {
-    color: $white;
+    color: $danger;
 }
 
 /* AccountSuccess Styling */
