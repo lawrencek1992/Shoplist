@@ -106,7 +106,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                         password: user.password,
                                         confirmPassword: user.confirmPassword,
                                     });
-                                    setErrorMessage(null);
                                 }}
                                 placeholder="e.g. Maria"
                             />
@@ -130,7 +129,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                         password: user.password,
                                         confirmPassword: user.confirmPassword,
                                     });
-                                    setErrorMessage(null);
                                 }}
                                 placeholder="example@gmail.com"
                             />
@@ -155,7 +153,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                         password: event.target.value,
                                         confirmPassword: user.confirmPassword,
                                     });
-                                    setErrorMessage(null);
                                 }}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -179,7 +176,6 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                         password: user.password,
                                         confirmPassword: event.target.value,
                                     });
-                                    setErrorMessage(null);
                                 }}
                             />
                             <Form.Control.Feedback type="invalid">
