@@ -1,8 +1,12 @@
 import React, {useState } from 'react';
 import { useStorageState } from 'react-storage-hooks';
+import { Container } from 'react-bootstrap';
+import firebase from '../firebase';
+
 import List from './List';
 import AddItemForm from './AddItemForm';
-import { Container } from 'react-bootstrap';
+import Prompt from './Prompt';
+
 
 const Home = (user) => {
   const [showAddItemForm, setShowAddItemForm] = useState(false);
@@ -29,22 +33,29 @@ const Home = (user) => {
   }
     return (
         <Container className="Home" fluid>
-                <List 
-                  listItems={listItems}
-                  deleteItem={deleteItem}
-                />
-                <AddItemForm 
-                  showAddItemForm={showAddItemForm} 
-                  handleHideAddItemForm={handleHideAddItemForm}
-                  listItems={listItems}
-                  addNewItem={addNewItem}
-                />
-                <div 
-                  className="AddButton btn-danger bg-gradient" 
-                  onClick={handleButtonClick}
-                >
-                +
-                </div>
+        { firebase.auth().currentUser 
+          ? (
+            <List 
+              listItems={listItems}
+              deleteItem={deleteItem}
+            />
+          )
+          : (
+            <Prompt />
+          )
+        }
+          <AddItemForm 
+            showAddItemForm={showAddItemForm} 
+            handleHideAddItemForm={handleHideAddItemForm}
+            listItems={listItems}
+            addNewItem={addNewItem}
+          />
+          <div 
+            className="AddButton btn-danger bg-gradient" 
+            onClick={handleButtonClick}
+          >
+          +
+          </div>
         </Container>
     );
 }
