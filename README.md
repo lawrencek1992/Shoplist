@@ -9,6 +9,8 @@
 
     https://www.pexels.com/photo/empty-paper-and-tied-pasta-on-kitchen-table-4033404/
 
+* Font Awesome Icons for shopping bag icon in logo/name 
+
 
 
 
