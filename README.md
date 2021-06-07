@@ -14,6 +14,8 @@
 * Flaticon free arrow icons by Freepik
     https://www.flaticon.com/free-icon/curved-up-arrow_20901 
 
+* Google Fonts
+    'https://fonts.googleapis.com/css2?family=Bad+Script&display=swap'
 
 # Getting Started with Create React App
 
