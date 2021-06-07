@@ -35,7 +35,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                     // Create user with email and password in firebase
                     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                         .then((userCredential) => {
-                            // Create object in the realtime database to store the shopping list for newUser.
+                            // Create object in the realtime database to store the credentials and shopping list for newUser.
                             const newUser = firebase.auth().currentUser.uid;
                             database.ref('users/' + newUser).set({
                                 name: user.name,
