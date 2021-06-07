@@ -8,24 +8,26 @@ $modal-backdrop-opacity: 0.8;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+// Import handwriting font
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
 /* Overall styling */
 .App {
     text-align: center;
-    background-color: #fff;
+    background-color: $white;
     height: 100vh;
     width: 100vw;
-    color: #000;
+    color: $black;
   }
 
 .Home {
   text-align: center;
-  background-color: #fff;
+  background-color: $white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
-  color: #000; 
+  color: $black; 
 }
 
 /* Prompt styling */
@@ -36,6 +38,8 @@ $modal-backdrop-opacity: 0.8;
   width: 10em;
   font-size: 2em;
   color: $danger;
+  font-family: 'Bad Script', cursive;
+  font-weight: bold;
 }
 
 .up-arrow {
@@ -132,12 +136,12 @@ $modal-backdrop-opacity: 0.8;
 }
 
 #btn-close {
-  border: 1px solid #fff;
+  border: 1px solid $white;
 }
 
 #btn-close:hover {
-  background-color: #198754;
-  border: 1px solid #198754;
+  background-color: $success;
+  border: 1px solid $success;
 }
 
 /* Signup Modal Styling */
