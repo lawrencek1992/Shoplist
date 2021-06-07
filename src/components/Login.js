@@ -27,6 +27,10 @@ const Login = ({ user, setUser }) => {
                 // set userID from the uid in firebase (or something?)
               });
               console.log(user.email + " has been logged in successfully!");
+              setUser({
+                  email: user.email,
+                  uid: firebase.auth().currentUser.uid,
+              });
               history.push("/");
           })
           .catch((error) => {
