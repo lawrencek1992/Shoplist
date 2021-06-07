@@ -1,13 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from "react-router-dom";
-import { Container, Form, Button } from 'react-bootstrap';
-// import firebase from '../firebase.js';
+import { Container, Form, Button, Overlay, Tooltip } from 'react-bootstrap';
+import firebase from '../firebase.js';
 
-const Login = (onLogin) => {
-    const [loginCreds, setLoginCreds] = useState({});
+const Login = ({ user, setUser }) => {
     const [validated, setValidated] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [showEmailTooltip, setShowEmailTooltip] = useState(false);
+    const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
 
     const history = useHistory();
+
+    const email = useRef(null);
+    const password = useRef(null);
+
+    const onLogin = (email, password) => {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((response) => {
+              setUser({
+                email: response.user["email"],
+                isAuthenticated: true,
+    
+                // ?????
+                // set userID from the uid in firebase (or something?)
+              });
+              console.log(user.email + " has been logged in successfully!");
+              history.push("/");
+          })
+          .catch((error) => {
+            if (error.code === "auth/wrong-password") {
+                setErrorMessage("Invalid password");
+                setShowPasswordTooltip(true);
+                setTimeout(() => {
+                    setShowPasswordTooltip(false);
+                }, 3000);
+            } else if (error.code === "auth/user-not-found") {
+                setErrorMessage("Email address not found");
+                setShowEmailTooltip(true);
+                setTimeout(() => {
+                    setShowEmailTooltip(false);
+                }, 3000);
+            }
+        })
+      };
 
     const handleLogin = (event) => {
         const form = event.currentTarget;
@@ -18,12 +55,10 @@ const Login = (onLogin) => {
             event.preventDefault();
             setValidated(true);
         }
-
-
-
-        // Write a function to handle authentication in firebase and then save that to userContext;
-        setLoginCreds({});
-    }
+        if (user.email && user.password) {
+            onLogin(user.email, user.password);
+        }
+    };
 
     return (
         <Container className="Login" fluid>
@@ -39,16 +74,28 @@ const Login = (onLogin) => {
                         </Form.Label>
                         <Form.Control
                             required
-                            type="email" 
-                            onChange={(event) => setLoginCreds({
+                            type="email"
+                            ref={email}
+                            onChange={(event) => setUser({
+                                name: user.name,
                                 email: event.target.value,
-                                password: loginCreds.password,
+                                password: user.password,
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
                                 Email required
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <Overlay 
+                            target={email.current}
+                            show={showEmailTooltip} 
+                            placement="top">
+                            {(props) => (
+                                <Tooltip {...props}>
+                                    {errorMessage}
+                                </Tooltip>
+                            )}
+                    </Overlay>
                     <br />
                     <Form.Group controlId="validationCustom06">
                         <Form.Label>
@@ -56,16 +103,28 @@ const Login = (onLogin) => {
                         </Form.Label>
                         <Form.Control
                             required
-                            type="text" 
-                            onChange={(event) => setLoginCreds({
-                                email: loginCreds.email,
-                                password: loginCreds.password,
+                            type="password"
+                            ref={password}
+                            onChange={(event) => setUser({
+                                name: user.name,
+                                email: user.email,
+                                password: event.target.value,
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
                                 Password required
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <Overlay 
+                            target={password.current}
+                            show={showPasswordTooltip} 
+                            placement="top">
+                            {(props) => (
+                                <Tooltip {...props}>
+                                    {errorMessage}
+                                </Tooltip>
+                            )}
+                    </Overlay>
                     <br />
                     <Button 
                         id="login-button" 
