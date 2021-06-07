@@ -8,7 +8,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
     const [validated, setValidated] = useState(false);
     const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
     const [showAlertTooltip, setShowAlertTooltip] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
 
     const signUpButton = useRef(null);
     const passwordConfirmation = useRef(null);
@@ -38,30 +38,24 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                             // Create object in the realtime database to store the shopping list for newUser.
                             const newUser = firebase.auth().currentUser.uid;
                             database.ref('users/' + newUser).set({
-                                items: "Look at all the items!",
+                                name: user.name,
+                                email: user.email,
+                                items: '',
                             });
+                            handleHideSignupForm();
+                            handleShowAccountSuccess();
                         })
                         .catch((error) => {
-                            setErrorMessage(error.message);
-                            const errorCode = error.code;
                             const errorMessage = error.message;
-                            console.log(errorCode, ": ", errorMessage);
-                            // Alert user if there are errors.
-                            if (errorCode) {
-                                setShowAlertTooltip(true);
-                                setTimeout(() => {
-                                    setShowAlertTooltip(false);
-                                }, 3000);
-                            }
-                            // If there are no errors, submit form and continue.
-                            if (!errorCode) {
-                                handleHideSignupForm();
-                                handleShowAccountSuccess();
-                            }
-                        });
-            }
+                            setErrorMessage(errorMessage);
+                            setShowAlertTooltip(true);
+                            setTimeout(() => {
+                                setShowAlertTooltip(false);
+                            }, 3000);
+                        })
         }   
-    };
+    }
+}
 
     return (
         <>
@@ -105,14 +99,14 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                 required
                                 type="text"
                                 value={user.name}
-                                defaultValue={user.name}
                                 onChange={(event) => {
                                     setUser({
                                         name: event.target.value,
                                         email: user.email,
                                         password: user.password,
                                         confirmPassword: user.confirmPassword,
-                                    })
+                                    });
+                                    setErrorMessage(null);
                                 }}
                                 placeholder="e.g. Maria"
                             />
@@ -129,14 +123,14 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                 required
                                 type="email"
                                 value={user.email}
-                                defaultValue={user.email} 
                                 onChange={(event) => {
                                     setUser({
                                         name: user.name,
                                         email: event.target.value,
                                         password: user.password,
                                         confirmPassword: user.confirmPassword,
-                                    })
+                                    });
+                                    setErrorMessage(null);
                                 }}
                                 placeholder="example@gmail.com"
                             />
@@ -154,14 +148,14 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                 ref={passwordConfirmation}
                                 type="password"
                                 value={user.password}
-                                defaultValue={user.password}
                                 onChange={(event) => {
                                     setUser({
                                         name: user.name,
                                         email: user.email,
                                         password: event.target.value,
                                         confirmPassword: user.confirmPassword,
-                                    })
+                                    });
+                                    setErrorMessage(null);
                                 }}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -178,15 +172,14 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                                 ref={passwordConfirmation}
                                 type="password" 
                                 value={user.confirmPassword}
-                                defaultValue={user.confirmPassword}
                                 onChange={(event) => {
-                                    event.preventDefault();
                                     setUser({
                                         name: user.name,
                                         email: user.email,
                                         password: user.password,
                                         confirmPassword: event.target.value,
                                     });
+                                    setErrorMessage(null);
                                 }}
                             />
                             <Form.Control.Feedback type="invalid">
