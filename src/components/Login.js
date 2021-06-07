@@ -44,7 +44,11 @@ const Login = (onLogin) => {
                         />
                     </Form.Group>
                     <br />
-                    <Button id="login-button" className="btn btn-success">
+                    <Button 
+                        id="login-button" 
+                        className="btn btn-success"
+                        onClick={() => handleLogin()}
+                    >
                         Login
                     </Button>
                     <Button 
