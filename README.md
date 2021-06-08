@@ -20,6 +20,8 @@
 * CSS code to make a fadeInAnimation:
     https://www.geeksforgeeks.org/how-to-create-fade-in-effect-on-page-load-using-css/
 
+* Modelled my useEffect function to fetch items on the function I used to fetch posts in my React Blog App (where I also stored data in the Firebase Realtime Database):
+    https://github.com/lawrencek1992/React-Blog-App/blob/main/src/App.js
 
 
 
