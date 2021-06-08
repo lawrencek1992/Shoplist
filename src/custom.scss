@@ -59,6 +59,17 @@ $modal-backdrop-opacity: 0.8;
   position: absolute;
   left: 83%;
   top: 15%;
+  animation: slideDown ease 3s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -15%;
+  }
+  100% {
+    top: 15%;
+  }
 }
 
 /* List styling */
