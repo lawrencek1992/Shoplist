@@ -17,6 +17,14 @@
 * Google Fonts
     'https://fonts.googleapis.com/css2?family=Bad+Script&display=swap'
 
+* CSS code to make a fadeInAnimation:
+    https://www.geeksforgeeks.org/how-to-create-fade-in-effect-on-page-load-using-css/
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
