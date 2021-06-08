@@ -23,6 +23,8 @@
 * Modelled my useEffect function to fetch items on the function I used to fetch posts in my React Blog App (where I also stored data in the Firebase Realtime Database):
     https://github.com/lawrencek1992/React-Blog-App/blob/main/src/App.js
 
+* Copied this sorting function to sort the objects in the Firebase Realtime Database:
+    https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
 
 
 
