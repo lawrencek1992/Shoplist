@@ -40,6 +40,18 @@ $modal-backdrop-opacity: 0.8;
   color: $danger;
   font-family: 'Bad Script', cursive;
   font-weight: bold;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .up-arrow {
@@ -50,6 +62,12 @@ $modal-backdrop-opacity: 0.8;
 }
 
 /* List styling */
+.list-group {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
 .icon:hover {
     color: $white;
 }
