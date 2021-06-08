@@ -1,5 +1,4 @@
 import React, {useState } from 'react';
-import { useStorageState } from 'react-storage-hooks';
 import { Container } from 'react-bootstrap';
 import firebase from '../firebase';
 
@@ -10,7 +9,7 @@ import Prompt from './Prompt';
 
 const Home = (user) => {
   const [showAddItemForm, setShowAddItemForm] = useState(false);
-  const [listItems, setListItems] = useStorageState(localStorage, `state-list-items`, []);
+  const [listItems, setListItems] = useState([]);
 
   const handleButtonClick = () => {
     if (firebase.auth().currentUser) {
@@ -23,15 +22,19 @@ const Home = (user) => {
   }
 
   const addNewItem = (item) => {
-    const updatedList = listItems.concat(item);
+    if (firebase.auth().currentUser) {
+      const updatedList = listItems.concat(item);
     setListItems(updatedList);
+    }
   }
 
   const deleteItem = (item) => {
-    const index = listItems.indexOf(item);
-    const updatedList = [...listItems];
-    updatedList.splice(index, 1);
-    setListItems(updatedList);
+    if (firebase.auth().currentUser) {
+      const index = listItems.indexOf(item);
+      const updatedList = [...listItems];
+      updatedList.splice(index, 1);
+      setListItems(updatedList);
+    }
   }
     return (
         <Container className="Home" fluid>
