@@ -38,7 +38,6 @@ const List = ({listItems, deleteItem}) => {
                             </ListGroup.Item>
                         </CSSTransition>
                     ))
-                // sort function here
                 }
             </TransitionGroup>
         </ListGroup>
