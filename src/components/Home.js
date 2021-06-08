@@ -30,22 +30,17 @@ const Home = (user) => {
         name: item.name,
         category: item.category,
       };
-      // Create a new child of "items" to hold the item data. 
+      // Create a new child of "items" to hold the item data and set the data of that child. UseEffect updates state. 
       database.ref('users/' + userID + '/items/' + Date.now()).set(itemData);
-      // Update the list of items in state? Necessary with useEffect?
-      // const updatedList = listItems.concat(item);
-      // setListItems(updatedList);
     }
   }
 
   const deleteItem = (item) => {
     if (firebase.auth().currentUser) {
-
-      // Update the list of items in state? Necessary with useEffect?
-      const index = listItems.indexOf(item);
-      const updatedList = [...listItems];
-      updatedList.splice(index, 1);
-      setListItems(updatedList);
+      const userID = firebase.auth().currentUser.uid;
+      // Use the item key (the date when it was created) to make a reference to the item. Then remove the item from firebase. UseEffect updates state. 
+      const itemRef = database.ref('users/' + userID + '/items/' + item.key);
+      itemRef.remove();
     }
   }
 
@@ -65,11 +60,28 @@ const Home = (user) => {
             category: items[item].category,
           });
         }
-        setListItems(listItemsState);
+        // Function to sort items
+        function sortByCategory(a, b) {
+          const itemA = a.category.toLowerCase();
+          const itemB = b.category.toLowerCase();
+
+          let comparison = 0;
+          if (itemA > itemB) {
+            comparison = 1;
+          } else if (itemA < itemB) {
+            comparison = -1;
+          }
+          return comparison;
+        }
+        // Store sorted items in a new variable and use it to update state. 
+        const orderedList = listItemsState.sort(sortByCategory);
+        setListItems(orderedList);
+
       })
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setListItems])
+  }, [setListItems]);
+
     return (
         <Container className="Home" fluid>
         { firebase.auth().currentUser 
