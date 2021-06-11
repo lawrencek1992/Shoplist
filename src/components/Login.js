@@ -2,12 +2,14 @@ import React, { useState, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import { Container, Form, Button, Overlay, Tooltip } from 'react-bootstrap';
 import firebase from '../firebase.js';
+import PasswordReset from './PasswordReset';
 
 const Login = ({ user, setUser }) => {
     const [validated, setValidated] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [showEmailTooltip, setShowEmailTooltip] = useState(false);
     const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
+    const [showPasswordReset, setShowPasswordReset] = useState(false);
 
     const history = useHistory();
 
@@ -131,19 +133,31 @@ const Login = ({ user, setUser }) => {
                     </Overlay>
                     <br />
                     <Button 
-                        id="login-button" 
+                        id="login-buttons" 
                         className="btn btn-success"
                         onClick={(event) => handleLogin(event)}
                     >
                         Login
                     </Button>
                     <Button 
+                        id="login-buttons"
                         className="btn btn-secondary"
                         onClick={() => history.push("/")}
                     >
                         Cancel
                     </Button>
+                    <Button
+                        id="login-buttons"
+                        className="btn btn-warning"
+                        onClick={()=> setShowPasswordReset(true)}
+                    >
+                        Forgot Password
+                    </Button>
                 </Form>
+                <PasswordReset 
+                    showPasswordReset={showPasswordReset}
+                    setShowPasswordReset={setShowPasswordReset}
+                />
             </Container>
         </Container>
     );
