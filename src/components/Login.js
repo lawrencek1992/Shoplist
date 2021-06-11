@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Container, Form, Button, Overlay, Tooltip } from 'react-bootstrap';
 import firebase from '../firebase.js';
 import PasswordReset from './PasswordReset';
+import ResetSuccess from './ResetSuccess';
 
 const Login = ({ user, setUser }) => {
     const [validated, setValidated] = useState(false);
@@ -10,6 +11,7 @@ const Login = ({ user, setUser }) => {
     const [showEmailTooltip, setShowEmailTooltip] = useState(false);
     const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
     const [showPasswordReset, setShowPasswordReset] = useState(false);
+    const [showResetSuccess, setShowResetSuccess] = useState(false);
 
     const history = useHistory();
 
@@ -24,9 +26,6 @@ const Login = ({ user, setUser }) => {
               setUser({
                 email: response.user["email"],
                 isAuthenticated: true,
-    
-                // ?????
-                // set userID from the uid in firebase (or something?)
               });
               console.log(user.email + " has been logged in successfully!");
               setUser({
@@ -157,6 +156,11 @@ const Login = ({ user, setUser }) => {
                 <PasswordReset 
                     showPasswordReset={showPasswordReset}
                     setShowPasswordReset={setShowPasswordReset}
+                    setShowResetSuccess={setShowResetSuccess}
+                />
+                <ResetSuccess 
+                    showResetSuccess={showResetSuccess}
+                    setShowResetSuccess={setShowResetSuccess}
                 />
             </Container>
         </Container>

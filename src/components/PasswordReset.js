@@ -2,11 +2,10 @@ import React, { useState, useRef } from 'react';
 import { Modal, Button, Form, Overlay, Tooltip } from 'react-bootstrap';
 import firebase from '../firebase';
 
-const PasswordReset = ({ showPasswordReset, setShowPasswordReset }) => {
+const PasswordReset = ({ showPasswordReset, setShowPasswordReset, setShowResetSuccess }) => {
     const [email, setEmail] = useState(null);
     const [showTooltip, setShowTooltip] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [showResetSuccess, setShowResetSuccess] = useState(false);
     
     const emailInput = useRef(null);
     
