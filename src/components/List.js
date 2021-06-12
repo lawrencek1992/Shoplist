@@ -15,7 +15,7 @@ const List = ({listItems, deleteItem}) => {
 
     return (
         <>
-        { (listItems.length == [])
+        { (listItems.length === [])
             ? (
                 <Container className="empty-list" fluid>
                     <p>Use the add button to create a shopping list!</p>
