@@ -7,7 +7,8 @@ import AddItemForm from './AddItemForm';
 import Prompt from './Prompt';
 
 
-const Home = (user) => {
+const Home = ({ user }) => {
+  console.log(user.uid);
   const [showAddItemForm, setShowAddItemForm] = useState(false);
   const [listItems, setListItems] = useState([]);
 
@@ -84,7 +85,7 @@ const Home = (user) => {
 
     return (
         <Container className="Home" fluid>
-        { firebase.auth().currentUser 
+        { user.uid 
           ? (
             <List 
               listItems={listItems}
