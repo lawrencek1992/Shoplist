@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import React, { useState, useRef } from 'react';
+import { Modal, Button, Form, Overlay, Tooltip } from 'react-bootstrap';
 
 const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
     const [item, setItem] = useState({});
+    const [nameTooltip, setNameTooltip] = useState(false);
+    const [categoryTooltip, setCategoryTooltip] = useState(false);
+
+    const nameInput = useRef(null);
+
+    const categorySelect = useRef(null);
 
     const handleForm = () => {
-        if (item.name) {
+        if (!item.name) {
+            setNameTooltip(true);
+            setTimeout(() => {
+                setNameTooltip(false);
+            }, 3000)
+        } else if (!item.category) {
+            setCategoryTooltip(true);
+            setTimeout(() => {
+                setCategoryTooltip(false);
+            }, 3000);
+        } else if (item.name && item.category) {
             addNewItem(item);
             handleHideAddItemForm();
         }
@@ -41,8 +57,6 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
             </Modal.Header>
             <Modal.Body id="modal">
                 <Form onSubmit={() => {
-                        clearForm();
-                        handleHideAddItemForm(); 
                         handleForm();
                     }}>
                     <Form.Group>
@@ -50,6 +64,7 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                             Item
                         </Form.Label>
                         <Form.Control 
+                            ref={nameInput}
                             type="text" 
                             className="mb-3" 
                             value={item.name} 
@@ -60,15 +75,29 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                                 key: Date.now(),
                             })}}
                         />
+                        <Overlay
+                            target={nameInput.current}
+                            show={nameTooltip}
+                            placement="top"
+                        >
+                            {(props) => (
+                                <Tooltip {...props}>
+                                    Name required!
+                                </Tooltip>
+                            )}
+                        </Overlay>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>
                             Category
                         </Form.Label>
                         <Form.Control 
-                            as="select" className="mb-3"
+                            ref={categorySelect}
+                            as="select" 
+                            className="mb-3"
                             value={item.category}
                             defaultValue={item.catetory}
+                            required
                             onChange={(event) => {setItem({
                                 name: item.name,
                                 category: event.target.value,
@@ -87,6 +116,17 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                             <option>produce</option>
                             <option>seafood</option>
                         </Form.Control>
+                        <Overlay
+                            target={categorySelect.current}
+                            show={categoryTooltip}
+                            placement="top"
+                        >
+                            {(props) => (
+                                <Tooltip {...props}>
+                                    Please select a category
+                                </Tooltip>
+                            )}
+                        </Overlay>
                     </Form.Group>
                 </Form>
             </Modal.Body>
@@ -95,8 +135,6 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                     className="btn btn-success" 
                     type="submit" 
                     onClick={() => {
-                        clearForm();
-                        handleHideAddItemForm(); 
                         handleForm();
                     }}>
                     Submit
