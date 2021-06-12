@@ -6,6 +6,8 @@ import PasswordReset from './PasswordReset';
 import ResetSuccess from './ResetSuccess';
 
 const Login = ({ user, setUser }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [validated, setValidated] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [showEmailTooltip, setShowEmailTooltip] = useState(false);
@@ -15,23 +17,19 @@ const Login = ({ user, setUser }) => {
 
     const history = useHistory();
 
-    const email = useRef(null);
-    const password = useRef(null);
+    const emailInput = useRef(null);
+    const passwordInput = useRef(null);
 
-    const onLogin = (email, password) => {
+    const onLogin = () => {
         firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
           .then((response) => {
               setUser({
-                email: response.user["email"],
-                isAuthenticated: true,
-              });
-              console.log(user.email + " has been logged in successfully!");
-              setUser({
-                  email: user.email,
+                  email: email,
                   uid: firebase.auth().currentUser.uid,
               });
+              console.log(user);
               history.push("/");
           })
           .catch((error) => {
@@ -60,7 +58,7 @@ const Login = ({ user, setUser }) => {
             event.preventDefault();
             setValidated(true);
         }
-        if (user.email && user.password) {
+        if (email && password) {
             onLogin(user.email, user.password);
         }
     };
@@ -80,19 +78,15 @@ const Login = ({ user, setUser }) => {
                         <Form.Control
                             required
                             type="email"
-                            ref={email}
-                            onChange={(event) => setUser({
-                                name: user.name,
-                                email: event.target.value,
-                                password: user.password,
-                            })}
+                            ref={emailInput}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                         <Form.Control.Feedback type="invalid">
                                 Email required
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Overlay 
-                            target={email.current}
+                            target={emailInput.current}
                             show={showEmailTooltip} 
                             placement="top">
                             {(props) => (
@@ -109,19 +103,15 @@ const Login = ({ user, setUser }) => {
                         <Form.Control
                             required
                             type="password"
-                            ref={password}
-                            onChange={(event) => setUser({
-                                name: user.name,
-                                email: user.email,
-                                password: event.target.value,
-                            })}
+                            ref={passwordInput}
+                            onChange={(event) => setPassword(event.target.value)}
                         />
                         <Form.Control.Feedback type="invalid">
                                 Password required
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Overlay 
-                            target={password.current}
+                            target={passwordInput.current}
                             show={showPasswordTooltip} 
                             placement="top">
                             {(props) => (
@@ -131,23 +121,20 @@ const Login = ({ user, setUser }) => {
                             )}
                     </Overlay>
                     <br />
-                    <Button 
-                        id="login-buttons" 
-                        className="btn btn-success"
+                    <Button  
+                        className="btn btn-success m-1"
                         onClick={(event) => handleLogin(event)}
                     >
                         Login
                     </Button>
                     <Button 
-                        id="login-buttons"
-                        className="btn btn-secondary"
+                        className="btn btn-secondary m-1"
                         onClick={() => history.push("/")}
                     >
                         Cancel
                     </Button>
                     <Button
-                        id="login-buttons"
-                        className="btn btn-warning"
+                        className="btn btn-warning m-1"
                         onClick={()=> setShowPasswordReset(true)}
                     >
                         Forgot Password
