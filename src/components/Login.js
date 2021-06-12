@@ -25,11 +25,17 @@ const Login = ({ user, setUser }) => {
           .auth()
           .signInWithEmailAndPassword(email, password)
           .then((response) => {
-              setUser({
-                  email: email,
-                  uid: firebase.auth().currentUser.uid,
-              });
-              console.log(user);
+            //   Store the uid for the logged in user in a variable. Then get the name of that user from the realtime database. Store both values in state. 
+              const userRef = firebase.auth().currentUser.uid;
+              const dbRef = firebase.database().ref();
+              dbRef.child('users').child(userRef).child('name').get()
+                .then((nameVal) => {
+                    setUser({
+                        email: email,
+                        uid: userRef,
+                        name: nameVal.val(),
+                    })
+                });
               history.push("/");
           })
           .catch((error) => {
