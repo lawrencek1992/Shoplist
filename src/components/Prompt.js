@@ -7,9 +7,9 @@ import { ReactComponent as UpArrow } from '../media/curved-up-arrow-.svg';
 const Prompt = () => {
     return (
 			<>
-					<Container className="prompt">
-							Sign up or log in to your existing account in order to add items to your own shopping list!
-					</Container>
+				<Container className="prompt">
+					Sign up or log in to your existing account in order to add items to your own shopping list!
+				</Container>
 				<CSSTransition>
 					<UpArrow className="up-arrow" />
 				</CSSTransition>
