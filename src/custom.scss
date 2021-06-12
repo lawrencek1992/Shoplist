@@ -33,7 +33,7 @@ $modal-backdrop-opacity: 0.8;
 /* Prompt styling */
 .prompt {
   position: absolute;
-  left: 57%;
+  left: 58%;
   top: 25%;
   width: 10em;
   font-size: 2em;
@@ -143,6 +143,20 @@ $modal-backdrop-opacity: 0.8;
 .item-fade-exit-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
+}
+
+.empty-list {
+  position: absolute;
+  left: 59%;
+  top: 40%;
+  width: 10em;
+  font-size: 2em;
+  color: $black;
+  font-family: 'Bad Script', cursive;
+  font-weight: bold;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .AddButton {
