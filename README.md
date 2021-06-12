@@ -27,8 +27,6 @@ I used **Google Firebase** for user authentication, cloud storage, and firestore
 
 ### Sources:
 #### React Transition Group doc on Reactcommunity.org
-    Regular documentation on reactjs.org/docs/animation and the README on the Github repositiory kept trying to get me to import CSSTransitionGroup, which isn't exported by the node modules folder. Node Modules only exports CSSTransition and TransitionGroup. This documentation showed how to use those exports to get the transition group working. 
-
     https://reactcommunity.org/react-transition-group/
 
 #### Pexels.com for free stock photos --> Karolina Grabowska
