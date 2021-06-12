@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import { useStorageState } from "react-storage-hooks";
+import { useStorageState } from 'react-storage-hooks';
 import './App.css';
 import './custom.scss';
 import firebase from './firebase.js';
