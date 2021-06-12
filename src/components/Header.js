@@ -43,7 +43,7 @@ const Header = ({ user, setUser, onLogout }) => {
                 Shoplist
             </Navbar.Brand>
             <Nav>
-            { !firebase.auth().currentUser 
+            { !user.uid
                 ? (
                     <>
                         <Button 
