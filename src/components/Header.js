@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import SignupForm from './SignupForm';
 import AccountSuccess from './AccountSuccess';
-import firebase from '../firebase';
 
 const Header = ({ user, setUser, onLogout }) => {
     const [showSignupForm, setShowSignupForm] = useState(false);
