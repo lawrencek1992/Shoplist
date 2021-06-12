@@ -8,7 +8,6 @@ import Prompt from './Prompt';
 
 
 const Home = ({ user }) => {
-  console.log(user.uid);
   const [showAddItemForm, setShowAddItemForm] = useState(false);
   const [listItems, setListItems] = useState([]);
 
