@@ -45,8 +45,9 @@ const Home = ({ user }) => {
   }
 
   useEffect(() => {
-    if (firebase.auth().currentUser) {
-      const userID = firebase.auth().currentUser.uid;
+    if (user.uid) {
+      const userID = user.uid;
+      // firebase.auth().currentUser.uid;
       const itemsRef = database.ref('users/' + userID + '/items');
       // Fetch a snapshot of what's in the database.
       itemsRef.on("value", (snapshot) => {
@@ -79,8 +80,7 @@ const Home = ({ user }) => {
 
       })
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setListItems]);
+  }, [database, setListItems, user.uid]);
 
     return (
         <Container className="Home" fluid>
