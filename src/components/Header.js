@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Navbar, Button, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import SignupForm from './SignupForm';
 import AccountSuccess from './AccountSuccess';
 
@@ -36,7 +37,7 @@ const Header = ({ user, setUser, onLogout }) => {
             fixed="top">
             <Navbar.Brand href="/">
                 <FontAwesomeIcon 
-                    icon={faShoppingBag} id="shopping-icon" 
+                    icon={faShoppingBag}
                     style={{ "marginLeft": "10px", "marginRight": "5px",}}
                 />
                 Shoplist
@@ -63,14 +64,24 @@ const Header = ({ user, setUser, onLogout }) => {
                     </>
                 )
                 : (
-                    <Button
-                    className="btn text-right"
-                    variant="outline-danger"
-                    style={{ "marginRight": "10px", }}
-                    onClick={onLogout}
-                >
-                    Logout
-                </Button>
+                    <>
+                        <Navbar.Text id="user-msg" style={{ "marginRight": "10px", }}>
+                            Signed in as: 
+                            <FontAwesomeIcon 
+                                icon={faUser} 
+                                style={{ "marginLeft": "10px", "marginRight": "5px",}}
+                            />
+                            <strong>{user.name}</strong>
+                        </Navbar.Text>
+                        <Button
+                            className="btn text-right"
+                            variant="outline-danger"
+                            style={{ "marginRight": "10px", }}
+                            onClick={onLogout}
+                        >
+                            Logout
+                        </Button>
+                    </>
                 )
             }
             </Nav>
