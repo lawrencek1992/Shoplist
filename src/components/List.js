@@ -8,14 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const List = ({listItems, deleteItem}) => {
-
     const handleDelete = (item) => {
         deleteItem(item);
     }
 
     return (
         <>
-        { (listItems.length === [])
+        { (listItems.length === 0)
             ? (
                 <Container className="empty-list" fluid>
                     <p>Use the add button to create a shopping list!</p>
