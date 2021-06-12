@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
+import { useStorageState } from "react-storage-hooks";
 import './App.css';
 import './custom.scss';
 import firebase from './firebase.js';
@@ -13,7 +14,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useStorageState(localStorage, `state-user`, {});
   
   const onLogout = () => {
     firebase
