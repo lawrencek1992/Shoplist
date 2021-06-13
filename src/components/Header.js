@@ -32,6 +32,7 @@ const Header = ({ user, setUser, onLogout }) => {
     return (
         <Navbar 
             bg="dark" 
+            id="navbar"
             variant="dark" 
             className="justify-content-between"
             fixed="top">
