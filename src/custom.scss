@@ -8,6 +8,7 @@ $modal-backdrop-opacity: 0.8;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+
 // Import handwriting font
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
@@ -21,6 +22,7 @@ $modal-backdrop-opacity: 0.8;
   }
 
 .Home {
+  background-image: url('./media/landscape-background.jpg');
   text-align: center;
   background-color: $white;
   background-size: cover;
@@ -127,6 +129,10 @@ $modal-backdrop-opacity: 0.8;
     background-color: $teal;
 }
 
+.item {
+  padding-left: 3em;
+}
+
 .item-fade-enter {
   opacity: 0.01;
 }
@@ -228,32 +234,107 @@ $modal-backdrop-opacity: 0.8;
   
   /* Media queries for responsive design */
   /* Extra Large Screens */
-  @media (max-width: 1600px) {
+  @media (max-width: 2000px) {
     .Home {
         background-image: url('./media/landscape-background.jpg');
+    }
+
+    .prompt {
+      font-size: 2.5em;
+    }
+
+    .AddButton {
+      font-size: 6.5em;
+    }
+
+    #navbar-brand {
+      font-size: 1.5em;
+    }
+
+    #navbar-signup, #navbar-login, #navbar-logout, #user-msg {
+      font-size: 1em;
+    }
+
+    #login-form {
+      font-size: 1.25em;
+    }
+
+    #login-button, #cancel-button, #forgot-password-button {
+      font-size: 1em;
+    }
+
+    .empty-list {
+      font-size: 2.25em;
     }
   }
   
   /* Large tablets or small laptops */
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     .Home {
         background-image: url('./media/landscape-background.jpg');
+        height: 100vh;
+        width: ´®100vw;
+    }
+
+    #navbar {
+      width: 100vw;
+      font-size: 1em;
+    }
+
+    .prompt {
+      font-size: 3em;
+      top: 50%;
+      left: 45%;
+    }
+
+    #login-form {
+      left: 25%;
+      right: 25%;
     }
   }
   
   /* Regular sized tablets */
-  @media (max-width: 768px) {
+  @media (max-width: 1025px) {
     .Home {
         background-image: url('./media/portrait-background.jpg');
     }
-    
-    .List {
-      top: 39%;
-      left: 43%;
+    #navbar {
+      width: 100vw;
+      font-size: 1em;
     }
-  
+
     .AddButton {
-      left: 18%;
+      font-size: 6em;
+      left: 20%;
+    }
+
+    .prompt {
+      font-size: 2.5em;
+      top: 50%;
+      left: 45%;
+    }
+
+    .up-arrow {
+      display: none;
+    }
+
+    #login-form {
+      left: 25%;
+      right: 25%;
+    }
+
+    .list-group {
+      font-size: 1em;
+      width: 45vw;
+      height: 45vh;
+      left: 41%;
+      top: 43%;
+    }
+
+    .empty-list {
+      font-size: 2.5em;
+      top: 50%;
+      left: 45%;
     }
   }
   
@@ -262,12 +343,113 @@ $modal-backdrop-opacity: 0.8;
     .Home {
         background-image: url('./media/portrait-background.jpg');
     }
+
+    #navbar {
+      width: 100vw;
+      font-size: 0.75em;
+    }
+
+    .AddButton {
+      font-size: 3.5em;
+      left: 12%;
+    }
+
+    .prompt {
+      font-size: 1em;
+      top: 50%;
+      left: 45%;
+    }
+
+    .up-arrow {
+      display: none;
+    }
+
+    #login-form {
+      width: 90vw;
+      left: 5%;
+    }
+
+    #login-button, #cancel-button, #forgot-password-button {
+      font-size: 0.9em;
+    }
+
+    #user-msg {
+      display: none;
+    }
+
+    .list-group {
+      font-size: 0.5em;
+      width: 50vw;
+      height: 41vh;
+      left: 41%;
+      top: 43%;
+    }
+
+    .item {
+      padding-left: 1.5em;
+    }
+
+    .empty-list {
+      font-size: 1em;
+      top: 50%;
+      left: 45%;
+    }
   }
   
   /* Extra small devices */
-  @media (max-width: 380px) {
+  @media (max-width: 340px) {
     .Home {
         background-image: url('./media/portrait-background.jpg');
+    }
+
+    #navbar {
+      width: 100vw;
+      font-size: 0.75em;
+    }
+
+    .prompt {
+      font-size: 0.75em;
+      top: 50%;
+      left: 45%;
+    }
+
+    .up-arrow {
+      display: none;
+    }
+
+    .AddButton {
+      font-size: 2.4em;
+    }
+
+    #login-form {
+      width: 90vw;
+      left: 5%;
+    }
+
+    #login-button, #cancel-button, #forgot-password-button {
+      font-size: 0.65em;
+    }
+
+    #user-msg {
+      display: none;
+    }
+
+    .list-group {
+      font-size: 0.5em;
+      width: 42vw;
+      height: 41vh;
+      left: 42.5%;
+      top: 43%;
+    }
+
+    .item {
+      padding-left: 0.09em;
+    }
+
+    .empty-list {
+      font-size: 0.75em;
+      top: 50%;
+      left: 45%;
     }
   }
   
