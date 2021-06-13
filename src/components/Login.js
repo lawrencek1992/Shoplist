@@ -76,7 +76,7 @@ const Login = ({ user, setUser }) => {
                     id="login-form"
                     noValidate 
                     validated={validated}
-                    onSubmit={handleLogin}>
+                    onSubmit={(event) => handleLogin}>
                     <Form.Group controlId="validationCustom05">
                         <Form.Label>
                             Email
@@ -130,18 +130,21 @@ const Login = ({ user, setUser }) => {
                     <Button  
                         className="btn btn-success m-1"
                         onClick={(event) => handleLogin(event)}
+                        id="login-button"
                     >
                         Login
                     </Button>
                     <Button 
                         className="btn btn-secondary m-1"
                         onClick={() => history.push("/")}
+                        id="cancel-button"
                     >
                         Cancel
                     </Button>
                     <Button
                         className="btn btn-warning m-1"
                         onClick={()=> setShowPasswordReset(true)}
+                        id="forgot-password-button"
                     >
                         Forgot Password
                     </Button>
