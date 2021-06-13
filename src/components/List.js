@@ -30,13 +30,13 @@ const List = ({listItems, deleteItem}) => {
                                 timeout={500}
                                 classNames="item-fade"
                             >
-                                <ListGroup.Item id={item.category} key={item.key}className="bg-gradient">
+                                <ListGroup.Item id={item.category} key={item.key} className="bg-gradient item">
                                     <Row>
-                                        <Col className="col-10">
+                                        <Col className="col-9">
                                         {item.name}
                                         </Col>
                                         <Col>
-                                            <FontAwesomeIcon icon={faTrashAlt} className="col-2 icon" onClick={()=> {
+                                            <FontAwesomeIcon icon={faTrashAlt} className="col-1 icon" onClick={()=> {
                                                 handleDelete(item)
                                             }}
                                         />
