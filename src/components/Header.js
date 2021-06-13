@@ -35,7 +35,7 @@ const Header = ({ user, setUser, onLogout }) => {
             variant="dark" 
             className="justify-content-between"
             fixed="top">
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="/" id="navbar-brand">
                 <FontAwesomeIcon 
                     icon={faShoppingBag}
                     style={{ "marginLeft": "10px", "marginRight": "5px",}}
@@ -50,6 +50,7 @@ const Header = ({ user, setUser, onLogout }) => {
                             className="btn-danger text-right"
                             style={{ "marginRight": "10px", }}
                             onClick={handleShowSignupForm}
+                            id="navbar-signup"
                         >
                             Sign Up
                         </Button>
@@ -58,6 +59,7 @@ const Header = ({ user, setUser, onLogout }) => {
                             variant="outline-success"
                             style={{ "marginRight": "10px", }}
                             onClick={() => history.push('/login')}
+                            id="navbar-login"
                         >
                             Login
                         </Button>
@@ -78,6 +80,7 @@ const Header = ({ user, setUser, onLogout }) => {
                             variant="outline-danger"
                             style={{ "marginRight": "10px", }}
                             onClick={onLogout}
+                            id="navbar-logout"
                         >
                             Logout
                         </Button>
