@@ -92,6 +92,7 @@ const PasswordReset = ({ showPasswordReset, setShowPasswordReset, setShowResetSu
             <Modal.Footer id="modal">
                 <Button
                     className="btn btn-success"
+                    id="btn"
                     type="submit"
                     onClick={(event) => handleSubmit(event)}
                     disabled={!email}
@@ -100,6 +101,7 @@ const PasswordReset = ({ showPasswordReset, setShowPasswordReset, setShowResetSu
                 </Button>
                 <Button
                     className="btn btn-secondary"
+                    id="btn"
                     onClick={() => setShowPasswordReset(false)}
                 >
                     Cancel

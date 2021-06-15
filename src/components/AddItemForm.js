@@ -133,6 +133,7 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
             <Modal.Footer id="modal">
                 <Button 
                     className="btn btn-success" 
+                    id="btn"
                     type="submit" 
                     onClick={() => {
                         handleForm();
@@ -141,6 +142,7 @@ const AddItemForm = ({showAddItemForm, handleHideAddItemForm, addNewItem}) => {
                 </Button>
                 <Button 
                     className="btn btn-secondary" 
+                    id="btn"
                     type="cancel" 
                    >
                     Cancel

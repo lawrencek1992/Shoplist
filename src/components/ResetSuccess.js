@@ -34,6 +34,7 @@ const ResetSuccess = ({ showResetSuccess, setShowResetSuccess }) => {
             <Modal.Footer id="modal">
                 <Button
                     className="btn"
+                    id="btn"
                     variant="outline-success"
                     onClick={() => {
                         closeModal();
