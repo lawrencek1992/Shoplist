@@ -10,7 +10,7 @@ const Prompt = () => {
 				<Container className="prompt">
 					Sign up or log in to your existing account in order to add items to your own shopping list!
 				</Container>
-				<CSSTransition>
+				<CSSTransition timeout={300}>
 					<UpArrow className="up-arrow" />
 				</CSSTransition>
 			</>

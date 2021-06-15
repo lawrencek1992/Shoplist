@@ -22,7 +22,7 @@ const List = ({listItems, deleteItem}) => {
             )
             : (
                 <ListGroup className="list-group">
-                    <TransitionGroup>
+                    <TransitionGroup timeout={500}>
                     {listItems
                         .map((item) => (
                             <CSSTransition
