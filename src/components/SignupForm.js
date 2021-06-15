@@ -199,6 +199,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                     <Button
                         ref={signUpButton}
                         className="btn btn-success"
+                        id="btn"
                         type="submit"
                         onClick={(event) => {
                             handleSignUp(event);
@@ -219,6 +220,7 @@ const SignupForm = ({ showSignupForm, handleHideSignupForm, handleShowAccountSuc
                     </Overlay>
                     <Button
                         className="btn btn-secondary"
+                        id="btn"
                         type="cancel"
                         onClick={() => {
                             setUser({});
