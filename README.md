@@ -8,7 +8,7 @@ _If you like this work, I am seeking a front end/UI developer position. Please e
 Clone the repository and use **node package manager** to install. 
 
 ```bash
-https://github.com/lawrencek1992/Beyond-Nature-CO.git
+https://github.com/lawrencek1992/Shoplist.git
 npm install
 ```
 
